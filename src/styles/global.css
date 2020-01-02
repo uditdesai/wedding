@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "KaushanScript-Regular";
+  font-style: normal;
+  src: local("KaushanScript-Regular"), local("KaushanScript-Regular"),
+    url("../fonts/KaushanScript-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "OpenSans-Bold";
+  font-style: normal;
+  src: local("OpenSans-Bold"), local("OpenSans-Bold"),
+    url("../fonts/OpenSans-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "OpenSans-Regular";
+  font-style: normal;
+  src: local("OpenSans-Regular"), local("OpenSans-Regular"),
+    url("../fonts/OpenSans-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Pacifico-Regular";
+  font-style: normal;
+  src: local("Pacifico-Regular"), local("Pacifico-Regular"),
+    url("../fonts/Pacifico-Regular.ttf") format("truetype");
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
