@@ -9,6 +9,7 @@ import LandingMobile from "../images/landingMobile.png"
 import Calendar from "../images/calendar.png"
 import Letter from "../images/letter.png"
 import Lock from "../images/lock.png"
+import RSVPIcon from "../images/rsvpIcon.png"
 
 import Down from "../images/down.png"
 
@@ -32,6 +33,7 @@ const LandingContainer = styled.div`
   align-items: center;
   background: url(${Landing}) no-repeat center center fixed;
   background-size: cover;
+  position: relative;
 
   @media (max-width: 800px) {
     min-height: 90vh;
@@ -76,7 +78,7 @@ const LandingTitle = styled.h1`
 `
 
 const LandingDate = styled.h4`
-  font-family: "OpenSans-Bold";
+  font-family: "Judson-Bold";
   font-size: 24px;
   color: white;
   text-align: center;
@@ -92,6 +94,7 @@ const LandingDate = styled.h4`
 const LandingDown = styled.img`
   width: 20px;
   margin: 0 0 50px 0;
+  cursor: pointer;
 `
 
 const RSVPContainer = styled.div`
@@ -101,123 +104,114 @@ const RSVPContainer = styled.div`
   padding: 0;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
 `
 
 const RSVPSection = styled.div`
-  width: 900px;
+  width: 60%;
   display: flex;
   justify-content: space-between;
-  margin: 60px 0 30px 0;
-  border: 3px solid #474594;
-  border-radius: 10px;
+  margin: 70px 0 0 0;
 
   @media (max-width: 800px) {
-    margin: 50px 0 30px 0;
     width: 90%;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
   }
 `
 
-const LeftRSVPSection = styled.div`
-  width: 50%;
+const RSVPInnerSection = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  border-right: 3px solid #474594;
+  justify-content: space-between;
+  align-items: center;
+  height: 230px;
 
   @media (max-width: 800px) {
-    width: 100%;
-    border: none;
-    border-bottom: 3px solid #474594;
+    height: 160px;
+    margin: 0 0 20px 0;
   }
 `
 
 const RSVPTitle = styled.h1`
-  font-family: "Pacifico-Regular";
-  font-size: 32px;
+  font-family: "Judson-Bold";
   color: #474594;
-  margin: 0;
-  width: 250px;
+  font-size: 50px;
+  margin: 0 0 10px 0;
 
   @media (max-width: 800px) {
-    text-align: center;
-    font-size: 24px;
-    margin: 30px 0 0 0;
+    font-size: 36px;
   }
 `
 
-const RSVPSubtitle = styled.h3`
-  font-family: "OpenSans-Bold";
-  font-size: 18px;
-  color: #474594;
-  margin: 30px 0 0 0;
-  width: 250px;
-
-  @media (max-width: 800px) {
-    text-align: center;
-    margin: 20px auto 0 auto;
-    width: 60%;
-    font-size: 14px;
-  }
-`
-
-const RSVPLink = styled.h3`
-  font-family: "OpenSans-Bold";
-  font-size: 24px;
-  color: #474594;
-  margin: 30px 0 0 0;
-  width: 250px;
-  text-decoration: underline;
-
-  @media (max-width: 800px) {
-    text-align: center;
-    width: 100%;
-    font-size: 16px;
-    margin: 30px 0 30px 0;
-  }
-`
-
-const RightRSVPSection = styled.div`
-  width: 50%;
+const RSVPDateContainer = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-
-  @media (max-width: 800px) {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin: 30px 0 0 0;
-  }
+  align-items: flex-end;
+  margin: -45px 0 0 0;
 `
 
 const RSVPDate = styled.h1`
-  font-family: "OpenSans-Bold";
-  font-size: 300px;
+  font-family: "Judson-Bold";
   color: #474594;
-  margin: 0 0 0 0;
+  font-size: 150px;
+  margin: 0;
 
   @media (max-width: 800px) {
-    font-size: 200px;
-    margin: -50px 0 0 0;
+    font-size: 100px;
   }
 `
 
-const RSVPDateSubtitle = styled.p`
-  font-family: "OpenSans-Bold";
-  font-size: 18px;
+const RSVPDateSubText = styled.p`
+  font-family: "Judson-Bold";
   color: #474594;
-  margin: 0 0 -180px 20px;
-  width: 120px;
+  font-size: 18px;
+  margin: 0 0 35px 10px;
+  width: 110px;
 
   @media (max-width: 800px) {
     font-size: 14px;
-    margin: -30px 0 30px 0;
+    margin: 0 0 22px 10px;
+  }
+`
+
+const RSVPSectionButton = styled.button`
+  width: 280px;
+  height: 60px;
+  font-family: "Judson-Bold";
+  color: #474594;
+  background: white;
+  font-size: 32px;
+  border: 2px solid #474594;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 30px 0;
+  outline: none;
+  cursor: pointer;
+  border-radius: 5px;
+
+  transition: box-shadow 0.5s ease;
+
+  &:hover {
+    box-shadow: 1px 3px 11px rgba(33, 33, 33, 0.3);
+  }
+
+  @media (max-width: 800px) {
+    width: 203px;
+    height: 35px;
+    font-size: 18px;
+  }
+`
+
+const RSVPEnding = styled.h1`
+  width: 280px;
+  font-family: "Judson-Bold";
+  color: #474594;
+  font-size: 50px;
+  text-align: center;
+  margin: -20px 0 25px 0;
+
+  @media (max-width: 800px) {
+    font-size: 36px;
   }
 `
 
@@ -227,8 +221,8 @@ const EventsContainer = styled.div`
 `
 
 const EventsTitle = styled.h1`
-  font-family: "Pacifico-Regular";
-  font-size: 42px;
+  font-family: "Judson-Bold";
+  font-size: 64px;
   color: #474594;
   width: 100%;
   text-align: center;
@@ -260,6 +254,12 @@ const EventSquare = styled.div`
   display: flex;
   position: relative;
   border-radius: 10px;
+
+  transition: box-shadow 0.5s ease;
+
+  &:hover {
+    box-shadow: 1px 3px 11px rgba(71, 69, 148, 0.5);
+  }
 `
 
 const EventImg = styled.img`
@@ -273,7 +273,7 @@ const EventOverlay = styled.div`
   position: absolute;
   height: 300px;
   width: 300px;
-  background: rgba(28, 27, 58, 0.5);
+  background: rgba(28, 27, 58, 0.6);
   opacity: 1;
   border-radius: 10px;
   display: flex;
@@ -286,9 +286,23 @@ const EventOverlay = styled.div`
   }
 `
 
+const EventSquareStartTitle = styled.h4`
+  width: 80%;
+  font-family: "Judson-Bold";
+  font-size: 24px;
+  color: white;
+  text-align: center;
+  position: absolute;
+  margin: 0;
+
+  @media (max-width: 800px) {
+    opacity: 0;
+  }
+`
+
 const EventSquareTitle = styled.h4`
-  width: 90%;
-  font-family: "OpenSans-Bold";
+  width: 80%;
+  font-family: "Judson-Bold";
   font-size: 20px;
   color: white;
   text-align: center;
@@ -301,9 +315,9 @@ const EventSquareTitle = styled.h4`
 `
 
 const EventSquareSubtitle = styled.p`
-  width: 90%;
-  font-family: "OpenSans-Bold";
-  font-size: 12px;
+  width: 80%;
+  font-family: "Judson-Regular";
+  font-size: 14px;
   color: white;
   text-align: center;
   margin: 0 0 5px 0;
@@ -315,8 +329,8 @@ const EventSquareSubtitle = styled.p`
 `
 
 const EventSquareDesc = styled.p`
-  width: 90%;
-  font-family: "OpenSans-Regular";
+  width: 80%;
+  font-family: "Judson-Regular";
   font-size: 12px;
   color: white;
   text-align: center;
@@ -335,12 +349,12 @@ const StoryContainer = styled.div`
 `
 
 const StoryTitle = styled.h1`
-  font-family: "Pacifico-Regular";
-  font-size: 42px;
+  font-family: "Judson-Bold";
+  font-size: 64px;
   color: #474594;
   width: 100%;
   text-align: center;
-  padding: 75px 0 50px 0;
+  padding: 75px 0 60px 0;
 
   @media (max-width: 800px) {
     font-size: 30px;
@@ -370,6 +384,7 @@ const LastStoryImg = styled.div`
   @media (max-width: 800px) {
     width: 330px;
     height: 330px;
+    margin: 0 auto 50px auto;
   }
 `
 
@@ -519,32 +534,63 @@ const Footer = styled.div`
   position: relative;
 `
 
-const FooterTitle = styled.h1`
-  font-family: "Pacifico-Regular";
-  font-size: 24px;
-  color: white;
-  width: 100%;
-  text-align: center;
-  padding: 50px 0 30px 0;
-  margin: 0;
+const FooterWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 400px;
 
   @media (max-width: 800px) {
-    padding: 40px 0 30px 0;
+    width: 90%;
   }
 `
 
-const FooterRSVPLink = styled.h3`
-  font-family: "OpenSans-Bold";
-  font-size: 14px;
+const FooterButton = styled.button`
+  width: 150px;
+  height: 35px;
+  border-radius: 5px;
+  background: #474594;
   color: white;
-  margin: 0 0 30px 0;
-  text-align: center;
-  width: 200px;
+  border: 2px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Judson-Bold";
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  transition: box-shadow 0.5s ease;
+
+  &:hover {
+    box-shadow: 1px 3px 11px rgba(33, 33, 33, 0.3);
+  }
+
+  @media (max-width: 800px) {
+    font-size: 14px;
+    width: 100px;
+  }
+`
+
+const FooterTitle = styled.h1`
+  font-family: "Judson-Bold";
+  font-size: 24px;
+  color: white;
+  padding: 30px 0 30px 0;
+  margin: 0;
+
+  @media (max-width: 800px) {
+    font-size: 18px;
+  }
 `
 
 const IndexPage = () => {
   // width and height of screen
   const { width } = useWindowSize()
+
+  const scrollDown = () => {
+    let elmt = document.getElementById("rsvpContainer")
+    elmt.scrollIntoView({ behavior: "smooth" })
+  }
 
   const hoverEvent = num => {
     if (width > 800) {
@@ -552,15 +598,17 @@ const IndexPage = () => {
         backgroundColor: "rgba(28, 27, 58, 0.9)",
       })
       TweenMax.to(`.eventText${num}`, 0.5, { autoAlpha: 1 })
+      TweenMax.to(`#eventStartTitle${num}`, 0.3, { autoAlpha: 0 })
     }
   }
 
   const hoverEventRev = num => {
     if (width > 800) {
       TweenMax.to(`#eventOverlay${num}`, 0.5, {
-        backgroundColor: "rgba(28, 27, 58, 0.5)",
+        backgroundColor: "rgba(28, 27, 58, 0.6)",
       })
       TweenMax.to(`.eventText${num}`, 0.5, { autoAlpha: 0 })
+      TweenMax.to(`#eventStartTitle${num}`, 0.3, { autoAlpha: 1 })
     }
   }
 
@@ -570,22 +618,24 @@ const IndexPage = () => {
         <LandingGradientOverlay>
           <LandingTitle>#KathanGetsRich</LandingTitle>
           <LandingDate>June 25 - June 28, 2020</LandingDate>
-          <LandingDown src={Down} />
+          <LandingDown src={Down} onClick={scrollDown} />
         </LandingGradientOverlay>
       </LandingContainer>
-      <RSVPContainer>
+      <RSVPContainer id="rsvpContainer">
         <RSVPSection>
-          <LeftRSVPSection>
+          <RSVPInnerSection>
             <RSVPTitle>It's Desaided!</RSVPTitle>
-            <RSVPSubtitle>
-              Join the celebration as Richa and Kathan get married.
-            </RSVPSubtitle>
-            <RSVPLink>RSVP</RSVPLink>
-          </LeftRSVPSection>
-          <RightRSVPSection>
-            <RSVPDate>5</RSVPDate>
-            <RSVPDateSubtitle>Months till the wedding</RSVPDateSubtitle>
-          </RightRSVPSection>
+            <RSVPDateContainer>
+              <RSVPDate>05</RSVPDate>
+              <RSVPDateSubText>Months till the wedding</RSVPDateSubText>
+            </RSVPDateContainer>
+          </RSVPInnerSection>
+          <RSVPInnerSection>
+            <StyledLink to="/rsvp">
+              <RSVPSectionButton>RSVP</RSVPSectionButton>
+            </StyledLink>
+            <RSVPEnding>Shaadi Mein Zaroor Aana!</RSVPEnding>
+          </RSVPInnerSection>
         </RSVPSection>
       </RSVPContainer>
       <EventsContainer>
@@ -603,6 +653,9 @@ const IndexPage = () => {
                 }}
                 id="eventOverlay1"
               >
+                <EventSquareStartTitle id="eventStartTitle1">
+                  Garba and Sangeet
+                </EventSquareStartTitle>
                 <EventSquareTitle className="eventText1">
                   Garba and Sangeet
                 </EventSquareTitle>
@@ -635,6 +688,9 @@ const IndexPage = () => {
                 }}
                 id="eventOverlay2"
               >
+                <EventSquareStartTitle id="eventStartTitle2">
+                  Bride's Ganesh Puja, Grah Shanti, and Pithi
+                </EventSquareStartTitle>
                 <EventSquareTitle className="eventText2">
                   Bride's Ganesh Puja, Grah Shanti, and Pithi
                 </EventSquareTitle>
@@ -667,6 +723,9 @@ const IndexPage = () => {
                 }}
                 id="eventOverlay3"
               >
+                <EventSquareStartTitle id="eventStartTitle3">
+                  Bride's Mehndi
+                </EventSquareStartTitle>
                 <EventSquareTitle className="eventText3">
                   Bride's Mehndi
                 </EventSquareTitle>
@@ -699,6 +758,9 @@ const IndexPage = () => {
                 }}
                 id="eventOverlay4"
               >
+                <EventSquareStartTitle id="eventStartTitle4">
+                  Groom's Ganesh Puja, Grah Shanti, and Pithi
+                </EventSquareStartTitle>
                 <EventSquareTitle className="eventText4">
                   Groom's Ganesh Puja, Grah Shanti, and Pithi
                 </EventSquareTitle>
@@ -731,6 +793,9 @@ const IndexPage = () => {
                 }}
                 id="eventOverlay5"
               >
+                <EventSquareStartTitle id="eventStartTitle5">
+                  Wedding
+                </EventSquareStartTitle>
                 <EventSquareTitle className="eventText5">
                   Wedding
                 </EventSquareTitle>
@@ -763,6 +828,9 @@ const IndexPage = () => {
                 }}
                 id="eventOverlay6"
               >
+                <EventSquareStartTitle id="eventStartTitle6">
+                  Reception
+                </EventSquareStartTitle>
                 <EventSquareTitle className="eventText6">
                   Reception
                 </EventSquareTitle>
@@ -801,10 +869,10 @@ const IndexPage = () => {
         <LastStoryImg></LastStoryImg>
       </StoryContainer>
       <Footer>
-        <FooterTitle>#KathanGetsRich</FooterTitle>
-        <FooterRSVPLink>
-          Remember to RSVP for the wedding by clicking here.
-        </FooterRSVPLink>
+        <FooterWrapper>
+          <FooterTitle>#KathanGetsRich</FooterTitle>
+          <FooterButton>RSVP</FooterButton>
+        </FooterWrapper>
       </Footer>
     </>
   )

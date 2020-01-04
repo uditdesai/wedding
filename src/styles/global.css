@@ -26,6 +26,20 @@
     url("../fonts/Pacifico-Regular.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "Judson-Regular";
+  font-style: normal;
+  src: local("Judson-Regular"), local("Judson-Regular"),
+    url("../fonts/Judson-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Judson-Bold";
+  font-style: normal;
+  src: local("Judson-Bold"), local("Judson-Bold"),
+    url("../fonts/Judson-Bold.ttf") format("truetype");
+}
+
 html,
 body {
   margin: 0;
