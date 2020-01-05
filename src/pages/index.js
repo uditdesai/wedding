@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import { TweenMax, Power0 } from "gsap"
+import CSSPlugin from "gsap/CSSPlugin"
+const C = CSSPlugin
 import useWindowSize from "../hooks/useWindowSize"
 
 import Landing from "../images/landing.png"
