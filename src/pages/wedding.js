@@ -389,7 +389,7 @@ const FooterTitle = styled.h1`
   }
 `
 
-const GarbaPage = () => {
+const WeddingPage = () => {
   // width and height of screen
   const { width } = useWindowSize()
 
@@ -401,18 +401,18 @@ const GarbaPage = () => {
           <StyledLink to="/">
             <BackLink>Back to the Wedding</BackLink>
           </StyledLink>
-          <EventTitle>Garba</EventTitle>
+          <EventTitle>Wedding</EventTitle>
         </StartContainer>
         <ContentContainer>
           <BannerContainer>
             <DateContainer>
               <DateWrapper>
-                <DateBigText>25</DateBigText>
+                <DateBigText>27</DateBigText>
                 <DateSmallText>June 2020</DateSmallText>
               </DateWrapper>
               <MidDateWrapper>
-                <DateBigText>7:00</DateBigText>
-                <DateSmallText>PM</DateSmallText>
+                <DateBigText>8:00</DateBigText>
+                <DateSmallText>AM</DateSmallText>
               </MidDateWrapper>
               <DateWrapper>
                 <DateMediumText>Grand Galaxy Banquet Hall</DateMediumText>
@@ -424,23 +424,23 @@ const GarbaPage = () => {
             <ScheduleTitle>Schedule</ScheduleTitle>
             <ScheduleWrapper>
               <TimeWrapper>
-                <ScheduleTime>6:30pm</ScheduleTime>
+                <ScheduleTime>8:30am</ScheduleTime>
                 <ScheduleDesc>Guests start arriving</ScheduleDesc>
               </TimeWrapper>
               <TimeWrapper>
-                <ScheduleTime>7:00pm</ScheduleTime>
+                <ScheduleTime>9:00am</ScheduleTime>
                 <ScheduleDesc>Food is ready to be taken</ScheduleDesc>
               </TimeWrapper>
               <TimeWrapper>
-                <ScheduleTime>7:30pm</ScheduleTime>
+                <ScheduleTime>9:30am</ScheduleTime>
                 <ScheduleDesc>Program begins with performances</ScheduleDesc>
               </TimeWrapper>
               <TimeWrapper>
-                <ScheduleTime>8:30pm</ScheduleTime>
+                <ScheduleTime>9:30am</ScheduleTime>
                 <ScheduleDesc>Garba starts now</ScheduleDesc>
               </TimeWrapper>
               <TimeWrapper>
-                <ScheduleTime>9:30pm</ScheduleTime>
+                <ScheduleTime>10:30am</ScheduleTime>
                 <ScheduleDesc>
                   Open dance floor begins. Be ready to party!
                 </ScheduleDesc>
@@ -482,4 +482,4 @@ const GarbaPage = () => {
   )
 }
 
-export default GarbaPage
+export default WeddingPage

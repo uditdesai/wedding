@@ -55,7 +55,7 @@ const BackLink = styled.p`
 
 const EventTitle = styled.h1`
   font-family: "Judson-Bold";
-  font-size: 64px;
+  font-size: 58px;
   color: black;
   margin: 20px 0 0 0;
 `
@@ -389,7 +389,7 @@ const FooterTitle = styled.h1`
   }
 `
 
-const GarbaPage = () => {
+const GroomsPithiPage = () => {
   // width and height of screen
   const { width } = useWindowSize()
 
@@ -401,21 +401,21 @@ const GarbaPage = () => {
           <StyledLink to="/">
             <BackLink>Back to the Wedding</BackLink>
           </StyledLink>
-          <EventTitle>Garba</EventTitle>
+          <EventTitle>Groom's Ganesh Puja, Grah Shanti, and Pithi</EventTitle>
         </StartContainer>
         <ContentContainer>
           <BannerContainer>
             <DateContainer>
               <DateWrapper>
-                <DateBigText>25</DateBigText>
+                <DateBigText>26</DateBigText>
                 <DateSmallText>June 2020</DateSmallText>
               </DateWrapper>
               <MidDateWrapper>
-                <DateBigText>7:00</DateBigText>
+                <DateBigText>1:00</DateBigText>
                 <DateSmallText>PM</DateSmallText>
               </MidDateWrapper>
               <DateWrapper>
-                <DateMediumText>Grand Galaxy Banquet Hall</DateMediumText>
+                <DateMediumText>Groom's Family Residence</DateMediumText>
               </DateWrapper>
             </DateContainer>
             <BannerImage src={Garba} />
@@ -424,23 +424,23 @@ const GarbaPage = () => {
             <ScheduleTitle>Schedule</ScheduleTitle>
             <ScheduleWrapper>
               <TimeWrapper>
-                <ScheduleTime>6:30pm</ScheduleTime>
+                <ScheduleTime>1:30pm</ScheduleTime>
                 <ScheduleDesc>Guests start arriving</ScheduleDesc>
               </TimeWrapper>
               <TimeWrapper>
-                <ScheduleTime>7:00pm</ScheduleTime>
+                <ScheduleTime>2:00pm</ScheduleTime>
                 <ScheduleDesc>Food is ready to be taken</ScheduleDesc>
               </TimeWrapper>
               <TimeWrapper>
-                <ScheduleTime>7:30pm</ScheduleTime>
+                <ScheduleTime>2:30pm</ScheduleTime>
                 <ScheduleDesc>Program begins with performances</ScheduleDesc>
               </TimeWrapper>
               <TimeWrapper>
-                <ScheduleTime>8:30pm</ScheduleTime>
+                <ScheduleTime>3:30pm</ScheduleTime>
                 <ScheduleDesc>Garba starts now</ScheduleDesc>
               </TimeWrapper>
               <TimeWrapper>
-                <ScheduleTime>9:30pm</ScheduleTime>
+                <ScheduleTime>3:30pm</ScheduleTime>
                 <ScheduleDesc>
                   Open dance floor begins. Be ready to party!
                 </ScheduleDesc>
@@ -450,11 +450,9 @@ const GarbaPage = () => {
           <LastColumn>
             <LocationContainer>
               <LocationTitle>Location</LocationTitle>
-              <LocationTextBold>
-                Galaxy Grand Convention Centre
-              </LocationTextBold>
+              <LocationTextBold>Groom's family residence</LocationTextBold>
               <LocationText>
-                200 Advance Blvd, Brampton, ON L6T 4V5
+                10 Sliprock Crescent, Brampton, ON L6Y 0W7
               </LocationText>
               <LocationLink href="https://www.google.ca/maps" target="_blank">
                 See on Google Maps
@@ -482,4 +480,4 @@ const GarbaPage = () => {
   )
 }
 
-export default GarbaPage
+export default GroomsPithiPage

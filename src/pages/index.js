@@ -3,7 +3,6 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import { TweenMax, Power0 } from "gsap"
 import CSSPlugin from "gsap/CSSPlugin"
-const C = CSSPlugin
 import useWindowSize from "../hooks/useWindowSize"
 
 import Landing from "../images/landing.png"
@@ -21,8 +20,11 @@ import Mehndi from "../images/mehndi.jpg"
 import Wedding from "../images/wedding.jpg"
 import Reception from "../images/reception.jpg"
 
+const C = CSSPlugin
+
 const StyledLink = styled(Link)`
   text-decoration: none;
+  outline: none;
 `
 
 const LandingContainer = styled.div`
@@ -110,13 +112,14 @@ const RSVPContainer = styled.div`
 `
 
 const RSVPSection = styled.div`
-  width: 60%;
+  width: 70%;
   display: flex;
   justify-content: space-between;
-  margin: 70px 0 0 0;
+  margin: 70px 0 30px 0;
 
   @media (max-width: 800px) {
     width: 90%;
+    align-items: center;
     flex-direction: column;
   }
 `
@@ -126,35 +129,57 @@ const RSVPInnerSection = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 230px;
+  height: 340px;
+  width: fit-content;
 
   @media (max-width: 800px) {
-    height: 160px;
+    height: 300px;
+    width: 100%;
     margin: 0 0 20px 0;
+
+    &:first-child {
+      margin: 0 0 60px 0;
+    }
   }
 `
 
 const RSVPTitle = styled.h1`
   font-family: "Judson-Bold";
-  color: #474594;
-  font-size: 50px;
-  margin: 0 0 10px 0;
+  color: black;
+  font-size: 64px;
+  margin: 0 0 0 0;
+  width: 365px;
+  text-align: center;
 
   @media (max-width: 800px) {
-    font-size: 36px;
+    font-size: 48px;
   }
 `
 
 const RSVPDateContainer = styled.div`
   display: flex;
-  align-items: flex-end;
-  margin: -45px 0 0 0;
+  justify-content: space-between;
+  width: 365px;
+
+  @media (max-width: 800px) {
+    width: 100%;
+  }
+`
+
+const DateCard = styled.div`
+  width: 31%;
+  height: 170px;
+  background: #88dcf8;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 const RSVPDate = styled.h1`
   font-family: "Judson-Bold";
-  color: #474594;
-  font-size: 150px;
+  color: black;
+  font-size: 100px;
   margin: 0;
 
   @media (max-width: 800px) {
@@ -164,32 +189,39 @@ const RSVPDate = styled.h1`
 
 const RSVPDateSubText = styled.p`
   font-family: "Judson-Bold";
-  color: #474594;
-  font-size: 18px;
-  margin: 0 0 35px 10px;
-  width: 110px;
+  color: black;
+  font-size: 40px;
+  margin: 0;
 
   @media (max-width: 800px) {
-    font-size: 14px;
-    margin: 0 0 22px 10px;
+    font-size: 32px;
+    margin: 0;
   }
+`
+
+const RSVPInvitationText = styled.p`
+  font-family: "Judson-Regular";
+  color: black;
+  font-size: 18px;
+  margin: 0;
+  width: 250px;
+  text-align: center;
 `
 
 const RSVPSectionButton = styled.button`
   width: 280px;
   height: 60px;
   font-family: "Judson-Bold";
-  color: #474594;
-  background: white;
+  color: black;
+  background: #88dcf8;
   font-size: 32px;
-  border: 2px solid #474594;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 0 30px 0;
   outline: none;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 10px;
+  border: none;
 
   transition: box-shadow 0.5s ease;
 
@@ -198,9 +230,9 @@ const RSVPSectionButton = styled.button`
   }
 
   @media (max-width: 800px) {
-    width: 203px;
-    height: 35px;
-    font-size: 18px;
+    width: 250px;
+    height: 65px;
+    font-size: 28px;
   }
 `
 
@@ -548,8 +580,8 @@ const FooterWrapper = styled.div`
 `
 
 const FooterButton = styled.button`
-  width: 150px;
-  height: 35px;
+  width: 120px;
+  height: 45px;
   border-radius: 5px;
   background: #474594;
   color: white;
@@ -562,6 +594,7 @@ const FooterButton = styled.button`
   color: white;
   cursor: pointer;
   transition: box-shadow 0.5s ease;
+  outline: none;
 
   &:hover {
     box-shadow: 1px 3px 11px rgba(33, 33, 33, 0.3);
@@ -577,7 +610,7 @@ const FooterTitle = styled.h1`
   font-family: "Judson-Bold";
   font-size: 24px;
   color: white;
-  padding: 30px 0 30px 0;
+  padding: 50px 0 50px 0;
   margin: 0;
 
   @media (max-width: 800px) {
@@ -628,22 +661,34 @@ const IndexPage = () => {
           <RSVPInnerSection>
             <RSVPTitle>It's Desaided!</RSVPTitle>
             <RSVPDateContainer>
-              <RSVPDate>05</RSVPDate>
-              <RSVPDateSubText>Months till the wedding</RSVPDateSubText>
+              <DateCard>
+                <RSVPDate>2</RSVPDate>
+              </DateCard>
+              <DateCard>
+                <RSVPDate>1</RSVPDate>
+              </DateCard>
+              <DateCard>
+                <RSVPDate>7</RSVPDate>
+              </DateCard>
             </RSVPDateContainer>
+            <RSVPDateSubText>Days till the wedding</RSVPDateSubText>
           </RSVPInnerSection>
           <RSVPInnerSection>
+            <RSVPTitle>Shaadi mein zaroor aana!</RSVPTitle>
+            <RSVPInvitationText>
+              Celebrate Richa and Kathan’s wedding as they take on a new chapter
+              of their lives
+            </RSVPInvitationText>
             <StyledLink to="/rsvp">
               <RSVPSectionButton>RSVP</RSVPSectionButton>
             </StyledLink>
-            <RSVPEnding>Shaadi Mein Zaroor Aana!</RSVPEnding>
           </RSVPInnerSection>
         </RSVPSection>
       </RSVPContainer>
       <EventsContainer>
         <EventsTitle>Band Baaja Baaraat</EventsTitle>
         <EventsGrid>
-          <StyledLink to="/rsvp">
+          <StyledLink to="/garba">
             <EventSquare>
               <EventImg src={Garba} />
               <EventOverlay
@@ -678,7 +723,7 @@ const IndexPage = () => {
               </EventOverlay>
             </EventSquare>
           </StyledLink>
-          <StyledLink to="/rsvp">
+          <StyledLink to="/brides-pithi">
             <EventSquare>
               <EventImg src={Haldi} />
               <EventOverlay
@@ -713,7 +758,7 @@ const IndexPage = () => {
               </EventOverlay>
             </EventSquare>
           </StyledLink>
-          <StyledLink to="/rsvp">
+          <StyledLink to="/mehndi">
             <EventSquare>
               <EventImg src={Mehndi} />
               <EventOverlay
@@ -748,7 +793,7 @@ const IndexPage = () => {
               </EventOverlay>
             </EventSquare>
           </StyledLink>
-          <StyledLink to="/rsvp">
+          <StyledLink to="/grooms-pithi">
             <EventSquare>
               <EventImg src={Haldi} />
               <EventOverlay
@@ -783,7 +828,7 @@ const IndexPage = () => {
               </EventOverlay>
             </EventSquare>
           </StyledLink>
-          <StyledLink to="/rsvp">
+          <StyledLink to="/wedding">
             <EventSquare>
               <EventImg src={Wedding} />
               <EventOverlay
@@ -818,7 +863,7 @@ const IndexPage = () => {
               </EventOverlay>
             </EventSquare>
           </StyledLink>
-          <StyledLink to="/rsvp">
+          <StyledLink to="/reception">
             <EventSquare>
               <EventImg src={Reception} />
               <EventOverlay
@@ -873,7 +918,9 @@ const IndexPage = () => {
       <Footer>
         <FooterWrapper>
           <FooterTitle>#KathanGetsRich</FooterTitle>
-          <FooterButton>RSVP</FooterButton>
+          <StyledLink to="/rsvp">
+            <FooterButton>RSVP</FooterButton>
+          </StyledLink>
         </FooterWrapper>
       </Footer>
     </>

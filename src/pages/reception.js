@@ -389,7 +389,7 @@ const FooterTitle = styled.h1`
   }
 `
 
-const GarbaPage = () => {
+const ReceptionPage = () => {
   // width and height of screen
   const { width } = useWindowSize()
 
@@ -401,13 +401,13 @@ const GarbaPage = () => {
           <StyledLink to="/">
             <BackLink>Back to the Wedding</BackLink>
           </StyledLink>
-          <EventTitle>Garba</EventTitle>
+          <EventTitle>Reception</EventTitle>
         </StartContainer>
         <ContentContainer>
           <BannerContainer>
             <DateContainer>
               <DateWrapper>
-                <DateBigText>25</DateBigText>
+                <DateBigText>28</DateBigText>
                 <DateSmallText>June 2020</DateSmallText>
               </DateWrapper>
               <MidDateWrapper>
@@ -482,4 +482,4 @@ const GarbaPage = () => {
   )
 }
 
-export default GarbaPage
+export default ReceptionPage
