@@ -2,6 +2,32 @@ import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 
+const guests = [
+  {
+    name: "Richa Desai",
+    numOfGuests: "3",
+    familyMembers: "Udit Desai, Yogesh Desai, Samta Desai",
+    tag: "All events",
+  },
+  {
+    name: "Kathan Desai",
+    numOfGuests: "1",
+    familyMembers: "Kavin Desai",
+    tag: "Wedding and Reception",
+  },
+  {
+    name: "Udit Desai",
+    numOfGuests: "0",
+    familyMembers: "",
+    tag: "Reception",
+  },
+]
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  outline: none;
+`
+
 const RSVPContainer = styled.div`
   width: 100%;
   min-height: 100vh;
@@ -22,12 +48,20 @@ const Header = styled.div`
 
 const BackLink = styled.p`
   font-family: "Judson-Bold";
-  font-size: 14px;
+  font-size: 16px;
   width: 650px;
   color: black;
   text-decoration: underline;
   text-align: left;
   margin: 100px 0 0 0;
+`
+
+const Hashtag = styled.p`
+  font-family: "Judson-Bold";
+  font-size: 24px;
+  width: 650px;
+  color: #474594;
+  text-align: right;
 `
 
 const FormContainer = styled.div`
@@ -40,6 +74,7 @@ const FormContainer = styled.div`
   margin: 25px 0 0 0;
   box-sizing: border-box;
   padding: 40px 0 40px 0;
+  box-shadow: 1px 3px 11px rgba(33, 33, 33, 0.3);
 `
 
 const FormTitle = styled.h1`
@@ -61,17 +96,18 @@ const InputTitle = styled.label`
   font-family: "OpenSans-Bold";
   font-size: 14px;
   color: black;
-  width: 250px;
+  width: 300px;
   text-align: left;
   margin: 0 0 5px 0;
 `
 
 const InputForm = styled.input`
-  width: 250px;
+  width: 300px;
   height: 35px;
   border: 2px solid #88dcf8;
+  border-radius: 5px;
   box-sizing: border-box;
-  padding: 0 5px 0 5px;
+  padding: 0 5px 0 8px;
   margin: 0 0 20px 0;
   font-family: "OpenSans-Regular";
   font-size: 12px;
@@ -92,15 +128,28 @@ const InputButton = styled.button`
   margin: 20px 0 0 0;
   cursor: pointer;
   transition: box-shadow 0.5s ease;
+  outline: none;
 
   &:hover {
     box-shadow: 1px 3px 11px rgba(33, 33, 33, 0.3);
   }
 `
 
+const InputErrorMessage = styled.p`
+  width: 300px;
+  text-align: left;
+  font-family: "OpenSans-Regular";
+  font-size: 14px;
+  color: black;
+  margin: 6px 0 6px 0;
+`
+
 const RSVPPage = () => {
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
+
+  const [correctGuestScreen, setCorrectGuestScreen] = useState(false)
+  const [incorrectGuestScreen, setIncorrectGuestScreen] = useState(false)
 
   const firstNameHandler = e => {
     setFirstName(e.target.value)
@@ -113,13 +162,36 @@ const RSVPPage = () => {
   const submitInfo = e => {
     e.preventDefault()
 
+    setCorrectGuestScreen(false)
+    setIncorrectGuestScreen(false)
+
     const data = {
       guest: {
-        name: firstName,
+        name: `${firstName
+          .toLowerCase()
+          .trim()} ${lastName.toLowerCase().trim()}`,
       },
     }
 
     console.log(data)
+
+    setFirstName("")
+    setLastName("")
+
+    let foundGuest = false
+    for (let i = 0; i < guests.length; i++) {
+      if (data.guest.name === guests[i].name.toLowerCase().trim()) {
+        foundGuest = true
+      }
+    }
+
+    if (foundGuest === true) {
+      console.log("success")
+      setCorrectGuestScreen(true)
+    } else {
+      console.log("no guest found")
+      setIncorrectGuestScreen(true)
+    }
 
     // fetch(
     //   "https://v2-api.sheety.co/efd2a35bf372a3cbe5976ef9c8e084d8/kathanGetsRich/guests",
@@ -155,30 +227,76 @@ const RSVPPage = () => {
   return (
     <RSVPContainer>
       <Header></Header>
-      <BackLink>Back to the Wedding</BackLink>
-      <FormContainer>
-        <FormTitle>Enter your name to RSVP!</FormTitle>
-        <FormWrapper>
-          <InputTitle htmlFor="firstName">First Name</InputTitle>
-          <InputForm
-            type="text"
-            id="firstName"
-            value={firstName}
-            onChange={firstNameHandler}
-            placeholder="Enter your first name"
-          />
-          <InputTitle htmlFor="lastName">Last Name</InputTitle>
-          <InputForm
-            type="text"
-            id="lastName"
-            value={lastName}
-            onChange={lastNameHandler}
-            placeholder="Enter your last name"
-          ></InputForm>
-          <InputButton>Submit</InputButton>
-        </FormWrapper>
-      </FormContainer>
+      <StyledLink to="/">
+        <BackLink>Back to the Wedding</BackLink>
+      </StyledLink>
+      {correctGuestScreen === false && incorrectGuestScreen === false && (
+        <FormContainer>
+          <FormTitle>Enter your name to RSVP!</FormTitle>
+          <FormWrapper>
+            <InputTitle htmlFor="firstName">First Name</InputTitle>
+            <InputForm
+              type="text"
+              id="firstName"
+              value={firstName}
+              onChange={firstNameHandler}
+              placeholder="Enter your first name"
+            />
+            <InputTitle htmlFor="lastName">Last Name</InputTitle>
+            <InputForm
+              type="text"
+              id="lastName"
+              value={lastName}
+              onChange={lastNameHandler}
+              placeholder="Enter your last name"
+            ></InputForm>
+            <InputButton onClick={submitInfo}>Submit</InputButton>
+          </FormWrapper>
+        </FormContainer>
+      )}
+      {correctGuestScreen === false && incorrectGuestScreen === true && (
+        <FormContainer>
+          <FormTitle>Enter your name to RSVP!</FormTitle>
+          <FormWrapper>
+            <InputTitle htmlFor="firstName">First Name</InputTitle>
+            <InputForm
+              type="text"
+              id="firstName"
+              value={firstName}
+              onChange={firstNameHandler}
+              placeholder="Enter your first name"
+            />
+            <InputTitle htmlFor="lastName">Last Name</InputTitle>
+            <InputForm
+              type="text"
+              id="lastName"
+              value={lastName}
+              onChange={lastNameHandler}
+              placeholder="Enter your last name"
+            ></InputForm>
+            <InputErrorMessage>
+              Unfortunately, we don't have your name on our guestlist.
+            </InputErrorMessage>
+            <InputErrorMessage>
+              Please make sure you enter your name correctly.
+            </InputErrorMessage>
+            <InputErrorMessage>
+              If you think we've made a mistake please email us at
+              guests@kathangetsrich.com!
+            </InputErrorMessage>
+            <InputButton onClick={submitInfo}>Submit</InputButton>
+          </FormWrapper>
+        </FormContainer>
+      )}
+      {correctGuestScreen === true && incorrectGuestScreen === false && (
+        <FormContainer>
+          <FormTitle>
+            Let us know which events you and your family can attend!
+          </FormTitle>
+        </FormContainer>
+      )}
     </RSVPContainer>
+
     // <div>
     //   <h1>Kathan Gets Rich</h1>
 
