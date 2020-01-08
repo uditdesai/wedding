@@ -14,6 +14,14 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: "gatsby-source-google-sheets",
+      options: {
+        spreadsheetId: "1wEO30I7CduPCuQ_QNTiuEedVfmY-N-72oQxwdCsU_Wc",
+        worksheetTitle: "Guests",
+        credentials: require("./client_secret.json"),
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     // this (optional) plugin enables Progressive Web App + Offline functionality

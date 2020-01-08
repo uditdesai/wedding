@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
+import { graphql } from "gatsby"
 
-const guests = [
+const oldGuests = [
   {
     name: "Richa Desai",
     numOfGuests: "3",
@@ -248,7 +249,9 @@ const FamilyMemberInput = styled.select`
   outline: none;
 `
 
-const RSVPPage = () => {
+const RSVPPage = ({ data }) => {
+  let guests = [...data.currentGuests.edges]
+
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
 
@@ -377,10 +380,10 @@ const RSVPPage = () => {
     let foundGuest = false
 
     for (let i = 0; i < guests.length; i++) {
-      if (data.guest.name === guests[i].name.toLowerCase().trim()) {
+      if (data.guest.name === guests[i].node.name.toLowerCase().trim()) {
         foundGuest = true
-        setSide(guests[i].side)
-        setTag(guests[i].tag)
+        setSide(guests[i].node.side)
+        setTag(guests[i].node.tag)
       }
     }
 
@@ -421,6 +424,8 @@ const RSVPPage = () => {
     //   .then(data => {
     //     console.log(data)
     //   })
+
+    console.log(guests)
   }, [])
 
   return (
@@ -698,3 +703,27 @@ const RSVPPage = () => {
 }
 
 export default RSVPPage
+
+export const query = graphql`
+  query {
+    currentGuests: allGoogleSheetGuestsRow {
+      edges {
+        node {
+          name
+          numberOfGuests
+          familyMembers
+          tag
+          side
+          eventOneAttending
+          eventOneNumber
+          eventTwoAttending
+          eventTwoNumber
+          eventThreeAttending
+          eventThreeNumber
+          eventFourAttending
+          eventFourNumber
+        }
+      }
+    }
+  }
+`
