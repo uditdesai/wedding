@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import { graphql } from "gatsby"
+import sheetrock from "sheetrock"
 
 const oldGuests = [
   {
@@ -252,29 +253,34 @@ const FamilyMemberInput = styled.select`
 const RSVPPage = ({ data }) => {
   let guests = [...data.currentGuests.edges]
 
+  const [guestData, setGuestData] = useState([])
+
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
 
   const [correctGuestScreen, setCorrectGuestScreen] = useState(false)
   const [incorrectGuestScreen, setIncorrectGuestScreen] = useState(false)
 
+  const [submittedRSVP, setSubmittedRSVP] = useState(false)
+
   const [side, setSide] = useState("")
   const [tag, setTag] = useState("")
+  const [sheetIndex, setSheetIndex] = useState(0)
 
   const [bridesPithi, setBridesPithi] = useState({
-    attending: false,
+    attending: "n/a",
     numOfFamily: 0,
   })
   const [groomsPithi, setGroomsPithi] = useState({
-    attending: "",
+    attending: "n/a",
     numOfFamily: 0,
   })
   const [wedding, setWedding] = useState({
-    attending: "",
+    attending: "n/a",
     numOfFamily: 0,
   })
   const [reception, setReception] = useState({
-    attending: "",
+    attending: "n/a",
     numOfFamily: 0,
   })
 
@@ -291,8 +297,6 @@ const RSVPPage = ({ data }) => {
     setBridesPithi(prev => {
       return { attending: yesOrNo, numOfFamily: prev.numOfFamily }
     })
-
-    console.log(bridesPithi)
   }
 
   const bridesPithiFamilyHandler = e => {
@@ -300,8 +304,6 @@ const RSVPPage = ({ data }) => {
     setBridesPithi(prev => {
       return { attending: prev.attending, numOfFamily: numOfFamily }
     })
-
-    console.log(bridesPithi)
   }
 
   const groomsPithiAttendanceHandler = e => {
@@ -309,8 +311,6 @@ const RSVPPage = ({ data }) => {
     setGroomsPithi(prev => {
       return { attending: yesOrNo, numOfFamily: prev.numOfFamily }
     })
-
-    console.log(groomsPithi)
   }
 
   const groomsPithiFamilyHandler = e => {
@@ -318,8 +318,6 @@ const RSVPPage = ({ data }) => {
     setGroomsPithi(prev => {
       return { attending: prev.attending, numOfFamily: numOfFamily }
     })
-
-    console.log(groomsPithi)
   }
 
   const weddingAttendanceHandler = e => {
@@ -327,8 +325,6 @@ const RSVPPage = ({ data }) => {
     setWedding(prev => {
       return { attending: yesOrNo, numOfFamily: prev.numOfFamily }
     })
-
-    console.log(wedding)
   }
 
   const weddingFamilyHandler = e => {
@@ -336,8 +332,6 @@ const RSVPPage = ({ data }) => {
     setWedding(prev => {
       return { attending: prev.attending, numOfFamily: numOfFamily }
     })
-
-    console.log(wedding)
   }
 
   const receptionAttendanceHandler = e => {
@@ -345,8 +339,6 @@ const RSVPPage = ({ data }) => {
     setReception(prev => {
       return { attending: yesOrNo, numOfFamily: prev.numOfFamily }
     })
-
-    console.log(reception)
   }
 
   const receptionFamilyHandler = e => {
@@ -354,11 +346,61 @@ const RSVPPage = ({ data }) => {
     setReception(prev => {
       return { attending: prev.attending, numOfFamily: numOfFamily }
     })
-
-    console.log(reception)
   }
 
-  const submitInfo = e => {
+  useEffect(() => {
+    const myCallback = function(error, options, response) {
+      if (!error) {
+        setGuestData(response.rows.slice(1, response.rows.length))
+      } else {
+        console.log(error)
+      }
+    }
+    sheetrock({
+      url:
+        "https://docs.google.com/spreadsheets/d/1wEO30I7CduPCuQ_QNTiuEedVfmY-N-72oQxwdCsU_Wc/edit?usp=sharing#gid=0",
+      callback: myCallback,
+      reset: true,
+    })
+  }, [])
+
+  useEffect(() => {
+    if (correctGuestScreen === true) {
+      for (let i = 0; i < guestData.length; i++) {
+        if (
+          guests[sheetIndex].node.name.toLowerCase().trim() ===
+          guestData[i].cellsArray[0].toLowerCase().trim()
+        ) {
+          if (guestData[i].cellsArray[5] !== "n/a") {
+            setBridesPithi({
+              attending: guestData[i].cellsArray[5],
+              numOfFamily: guestData[i].cellsArray[13],
+            })
+          }
+          if (guestData[i].cellsArray[7] !== "n/a") {
+            setGroomsPithi({
+              attending: guestData[i].cellsArray[7],
+              numOfFamily: guestData[i].cellsArray[14],
+            })
+          }
+          if (guestData[i].cellsArray[9] !== "n/a") {
+            setWedding({
+              attending: guestData[i].cellsArray[9],
+              numOfFamily: guestData[i].cellsArray[15],
+            })
+          }
+          if (guestData[i].cellsArray[11] !== "n/a") {
+            setReception({
+              attending: guestData[i].cellsArray[11],
+              numOfFamily: guestData[i].cellsArray[16],
+            })
+          }
+        }
+      }
+    }
+  }, [guestData, correctGuestScreen])
+
+  const submitName = e => {
     e.preventDefault()
 
     setCorrectGuestScreen(false)
@@ -384,6 +426,19 @@ const RSVPPage = ({ data }) => {
         foundGuest = true
         setSide(guests[i].node.side)
         setTag(guests[i].node.tag)
+        setSheetIndex(i)
+      } else {
+        if (guests[i].node.familymembers !== null) {
+          const names = guests[i].node.familymembers.split(", ")
+          for (let j = 0; j < names.length; j++) {
+            if (data.guest.name === names[j].toLowerCase().trim()) {
+              foundGuest = true
+              setSide(guests[i].node.side)
+              setTag(guests[i].node.tag)
+              setSheetIndex(i)
+            }
+          }
+        }
       }
     }
 
@@ -394,39 +449,51 @@ const RSVPPage = ({ data }) => {
       console.log("no guest found")
       setIncorrectGuestScreen(true)
     }
-
-    // fetch(
-    //   "https://v2-api.sheety.co/efd2a35bf372a3cbe5976ef9c8e084d8/kathanGetsRich/guests",
-    //   {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(data),
-    //   }
-    // )
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     console.log("Success:", data)
-    //   })
-    //   .catch(error => {
-    //     console.error(error)
-    //   })
   }
 
-  useEffect(() => {
-    // fetch(
-    //   "https://v2-api.sheety.co/efd2a35bf372a3cbe5976ef9c8e084d8/kathanGetsRich/guests"
-    // )
-    //   .then(results => {
-    //     return results.json()
-    //   })
-    //   .then(data => {
-    //     console.log(data)
-    //   })
+  const submitInfo = e => {
+    e.preventDefault()
 
-    console.log(guests)
-  }, [])
+    const data = {
+      guest: {
+        name: guests[sheetIndex].node.name,
+        numberOfGuests: guests[sheetIndex].node.numberofguests,
+        familyMembers: guests[sheetIndex].node.familyMembers,
+        tag: tag,
+        side: side,
+        eventOneAttending: bridesPithi.attending,
+        eventOneNumber: `${bridesPithi.numOfFamily}`,
+        eventTwoAttending: groomsPithi.attending,
+        eventTwoNumber: `${groomsPithi.numOfFamily}`,
+        eventThreeAttending: wedding.attending,
+        eventThreeNumber: `${wedding.numOfFamily}`,
+        eventFourAttending: reception.attending,
+        eventFourNumber: `${reception.numOfFamily}`,
+      },
+    }
+
+    fetch(
+      `https://v2-api.sheety.co/efd2a35bf372a3cbe5976ef9c8e084d8/kathanGetsRich/guests/${sheetIndex +
+        2}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    )
+      .then(response => response.json())
+      .then(data => {
+        console.log("Success:", data)
+        setSubmittedRSVP(true)
+        setCorrectGuestScreen(false)
+        setIncorrectGuestScreen(false)
+      })
+      .catch(error => {
+        console.error(error)
+      })
+  }
 
   return (
     <RSVPContainer>
@@ -434,30 +501,39 @@ const RSVPPage = ({ data }) => {
       <StyledLink to="/">
         <BackLink>Back to the Wedding</BackLink>
       </StyledLink>
-      {correctGuestScreen === false && incorrectGuestScreen === false && (
+      {submittedRSVP === true && (
         <FormContainer>
-          <FormTitle>Enter your name to RSVP!</FormTitle>
-          <FormWrapper>
-            <InputTitle htmlFor="firstName">First Name</InputTitle>
-            <InputForm
-              type="text"
-              id="firstName"
-              value={firstName}
-              onChange={firstNameHandler}
-              placeholder="Enter your first name"
-            />
-            <InputTitle htmlFor="lastName">Last Name</InputTitle>
-            <InputForm
-              type="text"
-              id="lastName"
-              value={lastName}
-              onChange={lastNameHandler}
-              placeholder="Enter your last name"
-            ></InputForm>
-            <InputButton onClick={submitInfo}>Submit</InputButton>
-          </FormWrapper>
+          <FormTitle>
+            Thanks for sending us your RSVP to the wedding events!
+          </FormTitle>
         </FormContainer>
       )}
+      {correctGuestScreen === false &&
+        incorrectGuestScreen === false &&
+        submittedRSVP === false && (
+          <FormContainer>
+            <FormTitle>Enter your name to RSVP!</FormTitle>
+            <FormWrapper>
+              <InputTitle htmlFor="firstName">First Name</InputTitle>
+              <InputForm
+                type="text"
+                id="firstName"
+                value={firstName}
+                onChange={firstNameHandler}
+                placeholder="Enter your first name"
+              />
+              <InputTitle htmlFor="lastName">Last Name</InputTitle>
+              <InputForm
+                type="text"
+                id="lastName"
+                value={lastName}
+                onChange={lastNameHandler}
+                placeholder="Enter your last name"
+              ></InputForm>
+              <InputButton onClick={submitName}>Submit</InputButton>
+            </FormWrapper>
+          </FormContainer>
+        )}
       {correctGuestScreen === false && incorrectGuestScreen === true && (
         <FormContainer>
           <FormTitle>Enter your name to RSVP!</FormTitle>
@@ -488,7 +564,7 @@ const RSVPPage = ({ data }) => {
               If you think we've made a mistake please email us at
               guests@kathangetsrich.com!
             </InputErrorMessage>
-            <InputButton onClick={submitInfo}>Submit</InputButton>
+            <InputButton onClick={submitName}>Submit</InputButton>
           </FormWrapper>
         </FormContainer>
       )}
@@ -675,30 +751,11 @@ const RSVPPage = ({ data }) => {
                 </EventQuestionWrapper>
               </EventRSVPWrapper>
             )}
-            <InputButton>Submit</InputButton>
+            <InputButton onClick={submitInfo}>Submit</InputButton>
           </FormWrapper>
         </FormContainer>
       )}
     </RSVPContainer>
-
-    // <div>
-    //   <h1>Kathan Gets Rich</h1>
-
-    //   <form>
-    //     <label htmlFor="name">Name</label>
-    //     <input type="text" id="name" value={name} onChange={nameHandler} />
-
-    //     <label htmlFor="canAttend">Can you attend? (Yes or No)</label>
-    //     <input
-    //       type="text"
-    //       id="canAttend"
-    //       value={canAttend}
-    //       onChange={canAttendHandler}
-    //     />
-
-    //     <button onClick={submitInfo}>Submit</button>
-    //   </form>
-    // </div>
   )
 }
 
@@ -710,18 +767,22 @@ export const query = graphql`
       edges {
         node {
           name
-          numberOfGuests
-          familyMembers
+          numberofguests
+          familymembers
           tag
           side
-          eventOneAttending
-          eventOneNumber
-          eventTwoAttending
-          eventTwoNumber
-          eventThreeAttending
-          eventThreeNumber
-          eventFourAttending
-          eventFourNumber
+          eventoneattending
+          eventonenumber
+          eventtwoattending
+          eventtwonumber
+          eventthreeattending
+          eventthreenumber
+          eventfourattending
+          eventfournumber
+          eventonecount
+          eventtwocount
+          eventthreecount
+          eventfourcount
         }
       }
     }
