@@ -12,24 +12,18 @@ const StyledLink = styled(Link)`
 
 const EventsContainer = styled.div`
   width: 100%;
-  min-height: calc(100vh - 70px);
+  min-height: 100vh;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  background: #bbdefb;
 
   @media (max-width: 800px) {
     min-height: 100%;
   }
-`
-
-const Header = styled.div`
-  width: 100%;
-  height: 20px;
-  margin: 0;
-  padding: 0;
-  background: #474594;
 `
 
 const StartContainer = styled.div`
@@ -38,7 +32,7 @@ const StartContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  margin: 40px 0 20px 0;
+  margin: 0 0 20px 0;
 
   @media (max-width: 800px) {
     width: 90%;
@@ -87,7 +81,7 @@ const BannerContainer = styled.div`
 const DateContainer = styled.div`
   width: 100%;
   height: 70px;
-  background: #ffe3ff;
+  background: #474594;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -116,7 +110,7 @@ const MidDateWrapper = styled.div`
 const DateBigText = styled.h1`
   font-family: "Judson-Bold";
   font-size: 54px;
-  color: black;
+  color: white;
   margin: 0;
 
   @media (max-width: 800px) {
@@ -128,7 +122,7 @@ const DateSmallText = styled.p`
   font-family: "Judson-Bold";
   font-size: 14px;
   width: 50px;
-  color: black;
+  color: white;
   margin: 0 0 10px 5px;
 
   @media (max-width: 800px) {
@@ -142,7 +136,7 @@ const DateMediumText = styled.p`
   font-family: "Judson-Bold";
   font-size: 14px;
   width: 90px;
-  color: black;
+  color: white;
   margin: 0 0 -10px 0;
 
   @media (max-width: 800px) {
@@ -170,6 +164,7 @@ const ScheduleContainer = styled.div`
   margin: 0 2% 0 2%;
   box-sizing: border-box;
   padding: 30px;
+  background: white;
 
   @media (max-width: 800px) {
     width: 100%;
@@ -250,6 +245,7 @@ const LocationContainer = styled.div`
   box-sizing: border-box;
   padding: 30px;
   margin: 0 0 20px 0;
+  background: white;
 `
 
 const LocationTitle = styled.h1`
@@ -306,6 +302,7 @@ const AttireContainer = styled.div`
   border: 5px solid #474594;
   box-sizing: border-box;
   padding: 30px;
+  background: white;
 `
 
 const AttireTitle = styled.h1`
@@ -330,65 +327,6 @@ const AttireText = styled.p`
   }
 `
 
-const Footer = styled.div`
-  width: 100%;
-  height: 70px;
-  background: #474594;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`
-
-const FooterWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 400px;
-
-  @media (max-width: 800px) {
-    width: 90%;
-  }
-`
-
-const FooterButton = styled.button`
-  width: 120px;
-  height: 35px;
-  border-radius: 5px;
-  background: #474594;
-  color: white;
-  border: 2px solid white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "Judson-Bold";
-  font-size: 18px;
-  color: white;
-  cursor: pointer;
-  transition: box-shadow 0.5s ease;
-  outline: none;
-
-  &:hover {
-    box-shadow: 1px 3px 11px rgba(33, 33, 33, 0.3);
-  }
-
-  @media (max-width: 800px) {
-    font-size: 14px;
-    width: 100px;
-  }
-`
-
-const FooterTitle = styled.h1`
-  font-family: "Judson-Bold";
-  font-size: 24px;
-  color: white;
-  margin: 0;
-
-  @media (max-width: 800px) {
-    font-size: 18px;
-  }
-`
-
 const GroomsPithiPage = () => {
   // width and height of screen
   const { width } = useWindowSize()
@@ -396,7 +334,6 @@ const GroomsPithiPage = () => {
   return (
     <>
       <EventsContainer>
-        <Header></Header>
         <StartContainer>
           <StyledLink to="/">
             <BackLink>Back to the Wedding</BackLink>
@@ -468,14 +405,6 @@ const GroomsPithiPage = () => {
           </LastColumn>
         </ContentContainer>
       </EventsContainer>
-      <Footer>
-        <FooterWrapper>
-          <FooterTitle>#KathanGetsRich</FooterTitle>
-          <StyledLink to="/rsvp">
-            <FooterButton>RSVP</FooterButton>
-          </StyledLink>
-        </FooterWrapper>
-      </Footer>
     </>
   )
 }

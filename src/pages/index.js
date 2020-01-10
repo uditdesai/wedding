@@ -251,13 +251,13 @@ const RSVPEnding = styled.h1`
 
 const EventsContainer = styled.div`
   width: 100%;
-  background-color: #ffe3ff;
+  background-color: #fce4ec;
 `
 
 const EventsTitle = styled.h1`
   font-family: "Judson-Bold";
   font-size: 64px;
-  color: #474594;
+  color: black;
   width: 100%;
   text-align: center;
   padding: 75px 0 50px 0;

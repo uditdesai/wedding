@@ -4,54 +4,6 @@ import styled from "styled-components"
 import { graphql } from "gatsby"
 import sheetrock from "sheetrock"
 
-const oldGuests = [
-  {
-    name: "Richa Desai",
-    numOfGuests: "3",
-    familyMembers: "Udit Desai, Yogesh Desai, Samta Desai",
-    tag: "all events",
-    side: "bride",
-    event1Attending: "",
-    event1Number: "",
-    event2Attending: "",
-    event2Number: "",
-    event3Attending: "",
-    event3Number: "",
-    event4Attending: "",
-    event4Number: "",
-  },
-  {
-    name: "Kathan Desai",
-    numOfGuests: "1",
-    familyMembers: "Kavin Desai",
-    tag: "wedding and reception",
-    side: "groom",
-    event1Attending: "",
-    event1Number: "",
-    event2Attending: "",
-    event2Number: "",
-    event3Attending: "",
-    event3Number: "",
-    event4Attending: "",
-    event4Number: "",
-  },
-  {
-    name: "Udit Desai",
-    numOfGuests: "0",
-    familyMembers: "",
-    tag: "reception",
-    side: "bride",
-    event1Attending: "",
-    event1Number: "",
-    event2Attending: "",
-    event2Number: "",
-    event3Attending: "",
-    event3Number: "",
-    event4Attending: "",
-    event4Number: "",
-  },
-]
-
 const StyledLink = styled(Link)`
   text-decoration: none;
   outline: none;
@@ -65,24 +17,26 @@ const RSVPContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  background: #fce4ec;
 `
 
-const Header = styled.div`
-  width: 100%;
-  height: 20px;
-  margin: 0;
-  padding: 0;
-  background: #474594;
-`
+// const Header = styled.div`
+//   width: 100%;
+//   height: 20px;
+//   margin: 0;
+//   padding: 0;
+//   background: #474594;
+// `
 
 const BackLink = styled.p`
-  font-family: "Judson-Bold";
-  font-size: 16px;
+  font-family: "OpenSans-Regular";
+  font-size: 14px;
   width: 700px;
   color: black;
   text-decoration: underline;
   text-align: left;
-  margin: 80px 0 0 0;
+  margin: 0;
 `
 
 const Hashtag = styled.p`
@@ -95,15 +49,16 @@ const Hashtag = styled.p`
 
 const FormContainer = styled.div`
   width: 700px;
-  border: 5px solid #474594;
+  /* border: 5px solid #474594; */
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 25px 0 0 0;
+  margin: 25px 0 75px 0;
   box-sizing: border-box;
   padding: 40px 0 40px 0;
   box-shadow: 1px 3px 11px rgba(33, 33, 33, 0.3);
+  background: white;
 `
 
 const FormTitle = styled.h1`
@@ -112,7 +67,11 @@ const FormTitle = styled.h1`
   color: black;
   width: 475px;
   text-align: center;
-  margin: 0 0 30px 0;
+  margin: 0;
+
+  &:first-of-type {
+    margin: 0 0 30px 0;
+  }
 `
 
 const FormWrapper = styled.form`
@@ -497,7 +456,6 @@ const RSVPPage = ({ data }) => {
 
   return (
     <RSVPContainer>
-      <Header></Header>
       <StyledLink to="/">
         <BackLink>Back to the Wedding</BackLink>
       </StyledLink>
@@ -506,6 +464,7 @@ const RSVPPage = ({ data }) => {
           <FormTitle>
             Thanks for sending us your RSVP to the wedding events!
           </FormTitle>
+          <FormTitle>Shaadi mein zaroor aana!</FormTitle>
         </FormContainer>
       )}
       {correctGuestScreen === false &&
