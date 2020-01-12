@@ -19,6 +19,10 @@ const RSVPContainer = styled.div`
   align-items: center;
   justify-content: center;
   background: #fce4ec;
+
+  @media (max-height: 700px) {
+    justify-content: flex-start;
+  }
 `
 
 // const Header = styled.div`
@@ -37,6 +41,10 @@ const BackLink = styled.p`
   text-decoration: underline;
   text-align: left;
   margin: 0;
+
+  @media (max-height: 700px) {
+    margin: 50px 0 0 0;
+  }
 `
 
 const Hashtag = styled.p`
@@ -54,11 +62,15 @@ const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 25px 0 75px 0;
+  margin: 25px 0 0 0;
   box-sizing: border-box;
   padding: 40px 0 40px 0;
   box-shadow: 1px 3px 11px rgba(33, 33, 33, 0.3);
   background: white;
+
+  @media (max-height: 700px) {
+    margin: 25px 0 50px 0;
+  }
 `
 
 const FormTitle = styled.h1`
@@ -353,6 +365,46 @@ const RSVPPage = ({ data }) => {
               attending: guestData[i].cellsArray[11],
               numOfFamily: guestData[i].cellsArray[16],
             })
+          }
+        } else {
+          let possibleMembers = guests[sheetIndex].node.familymembers.split(
+            ", "
+          )
+          let loopingMembers = guestData[i].cellsArray[2].split(", ")
+          let matchingMember = false
+
+          for (let j = 0; j < loopingMembers.length; j++) {
+            if (possibleMembers.includes(loopingMembers[j])) {
+              matchingMember = true
+              break
+            }
+          }
+
+          if (matchingMember === true) {
+            if (guestData[i].cellsArray[5] !== "n/a") {
+              setBridesPithi({
+                attending: guestData[i].cellsArray[5],
+                numOfFamily: guestData[i].cellsArray[13],
+              })
+            }
+            if (guestData[i].cellsArray[7] !== "n/a") {
+              setGroomsPithi({
+                attending: guestData[i].cellsArray[7],
+                numOfFamily: guestData[i].cellsArray[14],
+              })
+            }
+            if (guestData[i].cellsArray[9] !== "n/a") {
+              setWedding({
+                attending: guestData[i].cellsArray[9],
+                numOfFamily: guestData[i].cellsArray[15],
+              })
+            }
+            if (guestData[i].cellsArray[11] !== "n/a") {
+              setReception({
+                attending: guestData[i].cellsArray[11],
+                numOfFamily: guestData[i].cellsArray[16],
+              })
+            }
           }
         }
       }

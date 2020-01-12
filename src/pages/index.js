@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
-import { TweenMax, Power0 } from "gsap"
+import { TweenMax } from "gsap"
 import CSSPlugin from "gsap/CSSPlugin"
 import useWindowSize from "../hooks/useWindowSize"
 
 import Landing from "../images/landing.png"
 import LandingMobile from "../images/landingMobile.png"
-import Calendar from "../images/calendar.png"
-import Letter from "../images/letter.png"
-import Lock from "../images/lock.png"
-import RSVPIcon from "../images/rsvpIcon.png"
 
 import Down from "../images/down.png"
 
@@ -76,6 +72,19 @@ const LandingTitle = styled.h1`
   margin: 0;
   padding: 0;
 
+  @media (max-width: 1300px) {
+    font-size: 145px;
+  }
+  @media (max-width: 1100px) {
+    font-size: 130px;
+  }
+  @media (max-width: 1000px) {
+    font-size: 120px;
+  }
+  @media (max-width: 900px) {
+    font-size: 100px;
+  }
+
   @media (max-width: 800px) {
     font-size: 42px;
   }
@@ -117,7 +126,11 @@ const RSVPSection = styled.div`
   justify-content: space-between;
   margin: 70px 0 30px 0;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1200px) {
+    width: 80%;
+  }
+
+  @media (max-width: 1000px) {
     width: 90%;
     align-items: center;
     flex-direction: column;
@@ -132,7 +145,7 @@ const RSVPInnerSection = styled.div`
   height: 340px;
   width: fit-content;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     height: 300px;
     width: 100%;
     margin: 0 0 20px 0;
@@ -140,6 +153,21 @@ const RSVPInnerSection = styled.div`
     &:first-child {
       margin: 0 0 60px 0;
     }
+  }
+`
+
+const RSVPInnerSectionTwo = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 340px;
+  width: fit-content;
+
+  @media (max-width: 1000px) {
+    height: 275px;
+    width: 100%;
+    margin: 0 0 20px 0;
   }
 `
 
@@ -151,7 +179,7 @@ const RSVPTitle = styled.h1`
   width: 365px;
   text-align: center;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     font-size: 48px;
   }
 `
@@ -161,7 +189,10 @@ const RSVPDateContainer = styled.div`
   justify-content: space-between;
   width: 365px;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
+    width: 70%;
+  }
+  @media (max-width: 500px) {
     width: 100%;
   }
 `
@@ -182,7 +213,7 @@ const RSVPDate = styled.h1`
   font-size: 100px;
   margin: 0;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     font-size: 100px;
   }
 `
@@ -193,7 +224,7 @@ const RSVPDateSubText = styled.p`
   font-size: 40px;
   margin: 0;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     font-size: 32px;
     margin: 0;
   }
@@ -229,7 +260,7 @@ const RSVPSectionButton = styled.button`
     box-shadow: 1px 3px 11px rgba(33, 33, 33, 0.3);
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     width: 250px;
     height: 65px;
     font-size: 28px;
@@ -275,6 +306,10 @@ const EventsGrid = styled.div`
   grid-gap: 75px 75px;
   justify-content: center;
   padding: 0 0 100px 0;
+
+  @media (max-width: 1100px) {
+    grid-template-columns: 300px 300px;
+  }
 
   @media (max-width: 800px) {
     grid-template-columns: 300px;
@@ -618,9 +653,31 @@ const FooterTitle = styled.h1`
   }
 `
 
-const IndexPage = () => {
+const IndexPage = props => {
   // width and height of screen
   const { width } = useWindowSize()
+  const [prevUrl, setPrevUrl] = useState("")
+
+  useEffect(() => {
+    if (props.location.state) {
+      setPrevUrl(props.location.state.currentUrl)
+      console.log(props.location.state.currentUrl)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (
+      prevUrl.includes("garba") ||
+      prevUrl.includes("brides-pithi") ||
+      prevUrl.includes("mehndi") ||
+      prevUrl.includes("grooms-pithi") ||
+      prevUrl.includes("wedding") ||
+      prevUrl.includes("reception")
+    ) {
+      let elmt = document.getElementById("eventsContainer")
+      elmt.scrollIntoView({ behavior: "smooth" })
+    }
+  }, [prevUrl])
 
   const scrollDown = () => {
     let elmt = document.getElementById("rsvpContainer")
@@ -673,7 +730,7 @@ const IndexPage = () => {
             </RSVPDateContainer>
             <RSVPDateSubText>Days till the wedding</RSVPDateSubText>
           </RSVPInnerSection>
-          <RSVPInnerSection>
+          <RSVPInnerSectionTwo>
             <RSVPTitle>Shaadi mein zaroor aana!</RSVPTitle>
             <RSVPInvitationText>
               Celebrate Richa and Kathan’s wedding as they take on a new chapter
@@ -682,10 +739,10 @@ const IndexPage = () => {
             <StyledLink to="/rsvp">
               <RSVPSectionButton>RSVP</RSVPSectionButton>
             </StyledLink>
-          </RSVPInnerSection>
+          </RSVPInnerSectionTwo>
         </RSVPSection>
       </RSVPContainer>
-      <EventsContainer>
+      <EventsContainer id="eventsContainer">
         <EventsTitle>Band Baaja Baaraat</EventsTitle>
         <EventsGrid>
           <StyledLink to="/garba">

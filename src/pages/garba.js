@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
-import { TweenMax } from "gsap"
-import useWindowSize from "../hooks/useWindowSize"
 
 import Garba from "../images/garba.jpg"
 
@@ -21,7 +19,11 @@ const EventsContainer = styled.div`
   justify-content: center;
   background: #bbdefb;
 
-  @media (max-width: 800px) {
+  @media (max-height: 675px) {
+    justify-content: flex-start;
+  }
+
+  @media (max-width: 1100px) {
     min-height: 100%;
   }
 `
@@ -34,7 +36,7 @@ const StartContainer = styled.div`
   align-items: flex-start;
   margin: 0px 0 20px 0;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1100px) {
     width: 90%;
   }
 `
@@ -45,6 +47,14 @@ const BackLink = styled.p`
   color: black;
   text-decoration: underline;
   margin: 0;
+
+  @media (max-width: 1100px) {
+    margin: 50px 0 0 0;
+  }
+
+  @media (max-height: 675px) {
+    margin: 50px 0 0 0;
+  }
 `
 
 const EventTitle = styled.h1`
@@ -58,12 +68,17 @@ const ContentContainer = styled.div`
   display: flex;
   width: 80%;
   height: 500px;
-  margin: 0 0 40px 0;
+  margin: 0 0 0 0;
 
-  @media (max-width: 800px) {
+  @media (max-height: 675px) {
+    margin: 0 0 50px 0;
+  }
+
+  @media (max-width: 1100px) {
     width: 90%;
     height: fit-content;
     flex-direction: column;
+    margin: 0 0 50px 0;
   }
 `
 
@@ -73,7 +88,7 @@ const BannerContainer = styled.div`
   justify-content: space-between;
   flex-direction: column;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1100px) {
     width: 100%;
     justify-content: flex-start;
   }
@@ -86,7 +101,7 @@ const DateContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1100px) {
     margin: 0 0 20px 0;
   }
 `
@@ -102,7 +117,7 @@ const MidDateWrapper = styled.div`
   justify-content: center;
   width: 40%;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1100px) {
     width: 40%;
   }
 `
@@ -113,7 +128,7 @@ const DateBigText = styled.h1`
   color: white;
   margin: 0;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1100px) {
     font-size: 40px;
   }
 `
@@ -125,7 +140,7 @@ const DateSmallText = styled.p`
   color: white;
   margin: 0 0 10px 5px;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1100px) {
     font-size: 12px;
     margin: 0 0 8px 5px;
     width: 35px;
@@ -139,7 +154,7 @@ const DateMediumText = styled.p`
   color: white;
   margin: 0 0 -10px 0;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1100px) {
     font-size: 12px;
     width: 80px;
   }
@@ -151,7 +166,7 @@ const BannerImage = styled.img`
   object-fit: cover;
   border: 5px solid #474594;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1100px) {
     height: 250px;
   }
 `
@@ -166,7 +181,11 @@ const ScheduleContainer = styled.div`
   padding: 30px;
   background: white;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1200px) {
+    padding: 25px;
+  }
+
+  @media (max-width: 1100px) {
     width: 100%;
     margin: 20px 0 0 0;
   }
@@ -178,7 +197,11 @@ const ScheduleTitle = styled.h1`
   color: black;
   margin: 0;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1200px) {
+    font-size: 28px;
+  }
+
+  @media (max-width: 1100px) {
     font-size: 24px;
   }
 `
@@ -196,7 +219,7 @@ const TimeWrapper = styled.div`
   align-items: flex-start;
   margin: 0 0 10px 0;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1100px) {
     margin: 0;
   }
 `
@@ -206,7 +229,11 @@ const ScheduleTime = styled.p`
   font-size: 16px;
   color: black;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1200px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 1100px) {
     font-size: 14px;
     margin: 10px 0 10px 0;
   }
@@ -219,7 +246,12 @@ const ScheduleDesc = styled.p`
   width: 180px;
   text-align: left;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1200px) {
+    font-size: 14px;
+    width: 150px;
+  }
+
+  @media (max-width: 1100px) {
     font-size: 14px;
     margin: 10px 0 10px 0;
   }
@@ -230,7 +262,7 @@ const LastColumn = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1100px) {
     width: 100%;
     margin: 20px 0 0 0;
   }
@@ -246,6 +278,10 @@ const LocationContainer = styled.div`
   padding: 30px;
   margin: 0 0 20px 0;
   background: white;
+
+  @media (max-width: 1200px) {
+    padding: 25px;
+  }
 `
 
 const LocationTitle = styled.h1`
@@ -254,7 +290,11 @@ const LocationTitle = styled.h1`
   color: black;
   margin: 0;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1200px) {
+    font-size: 28px;
+  }
+
+  @media (max-width: 1100px) {
     font-size: 24px;
   }
 `
@@ -265,7 +305,11 @@ const LocationTextBold = styled.p`
   color: black;
   margin: 10px 0 10px 0;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1200px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 1100px) {
     font-size: 14px;
   }
 `
@@ -276,7 +320,11 @@ const LocationText = styled.p`
   color: black;
   margin: 0 0 10px 0;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1200px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 1100px) {
     font-size: 14px;
   }
 `
@@ -289,7 +337,11 @@ const LocationLink = styled.a`
   margin: 0 0 0 0;
   text-decoration: underline;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1200px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 1100px) {
     font-size: 14px;
   }
 `
@@ -303,6 +355,10 @@ const AttireContainer = styled.div`
   box-sizing: border-box;
   padding: 30px;
   background: white;
+
+  @media (max-width: 1200px) {
+    padding: 25px;
+  }
 `
 
 const AttireTitle = styled.h1`
@@ -311,7 +367,11 @@ const AttireTitle = styled.h1`
   color: black;
   margin: 0;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1200px) {
+    font-size: 28px;
+  }
+
+  @media (max-width: 1100px) {
     font-size: 24px;
   }
 `
@@ -322,20 +382,27 @@ const AttireText = styled.p`
   color: black;
   margin: 10px 0 10px 0;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1200px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 1100px) {
     font-size: 14px;
   }
 `
 
 const GarbaPage = () => {
-  // width and height of screen
-  const { width } = useWindowSize()
+  const [currentUrl, setCurrentUrl] = useState("")
 
+  useEffect(() => {
+    if (typeof window == "undefined") return
+    setCurrentUrl(window.location.href)
+  }, [])
   return (
     <>
       <EventsContainer>
         <StartContainer>
-          <StyledLink to="/">
+          <StyledLink to="/" state={{ currentUrl: currentUrl }}>
             <BackLink>Back to the Wedding</BackLink>
           </StyledLink>
           <EventTitle>Garba</EventTitle>
