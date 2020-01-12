@@ -136,6 +136,28 @@ const InputButton = styled.button`
   }
 `
 
+const EditButton = styled(InputButton)`
+  width: 120px;
+  height: 40px;
+  background: #88dcf8;
+  border-radius: 5px;
+  font-family: "OpenSans-Bold";
+  font-size: 14px;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 0 0;
+  cursor: pointer;
+  transition: box-shadow 0.5s ease;
+  outline: none;
+  border: none;
+
+  &:hover {
+    box-shadow: 1px 3px 11px rgba(33, 33, 33, 0.3);
+  }
+`
+
 const InputErrorMessage = styled.p`
   width: 300px;
   text-align: left;
@@ -231,7 +253,7 @@ const RSVPPage = ({ data }) => {
 
   const [correctGuestScreen, setCorrectGuestScreen] = useState(false)
   const [incorrectGuestScreen, setIncorrectGuestScreen] = useState(false)
-
+  const [editScreen, setEditScreen] = useState(false)
   const [submittedRSVP, setSubmittedRSVP] = useState(false)
 
   const [side, setSide] = useState("")
@@ -254,6 +276,11 @@ const RSVPPage = ({ data }) => {
     attending: "n/a",
     numOfFamily: 0,
   })
+
+  const editScreenHandler = e => {
+    e.preventDefault()
+    setEditScreen(false)
+  }
 
   const firstNameHandler = e => {
     setFirstName(e.target.value)
@@ -342,6 +369,7 @@ const RSVPPage = ({ data }) => {
           guests[sheetIndex].node.name.toLowerCase().trim() ===
           guestData[i].cellsArray[0].toLowerCase().trim()
         ) {
+          setEditScreen(true)
           if (guestData[i].cellsArray[5] !== "n/a") {
             setBridesPithi({
               attending: guestData[i].cellsArray[5],
@@ -381,6 +409,7 @@ const RSVPPage = ({ data }) => {
           }
 
           if (matchingMember === true) {
+            setEditScreen(true)
             if (guestData[i].cellsArray[5] !== "n/a") {
               setBridesPithi({
                 attending: guestData[i].cellsArray[5],
@@ -519,6 +548,15 @@ const RSVPPage = ({ data }) => {
           <FormTitle>Shaadi mein zaroor aana!</FormTitle>
         </FormContainer>
       )}
+      {editScreen === true && (
+        <FormContainer>
+          <FormTitle>
+            Thanks for sending us your RSVP to the wedding events! Would you
+            like to edit your RSVP?
+          </FormTitle>
+          <EditButton onClick={editScreenHandler}>Edit RSVP</EditButton>
+        </FormContainer>
+      )}
       {correctGuestScreen === false &&
         incorrectGuestScreen === false &&
         submittedRSVP === false && (
@@ -579,81 +617,38 @@ const RSVPPage = ({ data }) => {
           </FormWrapper>
         </FormContainer>
       )}
-      {correctGuestScreen === true && incorrectGuestScreen === false && (
-        <FormContainer>
-          <FormTitle>
-            You and your family are invited to the following wedding events, let
-            us know which you can attend!
-          </FormTitle>
-          <FormWrapper>
-            {(tag === "all events" && side === "bride") ||
-            (tag === "pithi" && side === "bride") ? (
-              <EventRSVPWrapper>
-                <EventTitle>Bride's Pithi</EventTitle>
-                <EventQuestionWrapper>
-                  <YesNoWrapper>
-                    <YesNoTitle>Can you attend?</YesNoTitle>
-                    <AttendanceWrapper>
-                      <YesNo>Yes</YesNo>
-                      <YesNoInput
-                        checked={bridesPithi.attending === "yes"}
-                        value="yes"
-                        type="radio"
-                        onChange={bridesPithiAttendanceHandler}
-                      />
-                    </AttendanceWrapper>
-                    <AttendanceWrapper>
-                      <YesNo>No</YesNo>
-                      <YesNoInput
-                        checked={bridesPithi.attending === "no"}
-                        value="no"
-                        type="radio"
-                        onChange={bridesPithiAttendanceHandler}
-                      />
-                    </AttendanceWrapper>
-                  </YesNoWrapper>
-                  <FamilyMembersWrapper>
-                    <FamilyMemberText>
-                      Number of family members who can attend?
-                    </FamilyMemberText>
-                    <FamilyMemberInput
-                      value={bridesPithi.numOfFamily}
-                      onChange={bridesPithiFamilyHandler}
-                    >
-                      <option value="0">0</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                    </FamilyMemberInput>
-                  </FamilyMembersWrapper>
-                </EventQuestionWrapper>
-              </EventRSVPWrapper>
-            ) : (
-              <></>
-            )}
-            {(tag === "all events" && side === "groom") ||
-              (tag === "pithi" && side === "groom" && (
+      {correctGuestScreen === true &&
+        incorrectGuestScreen === false &&
+        editScreen === false && (
+          <FormContainer>
+            <FormTitle>
+              You and your family are invited to the following wedding events,
+              let us know which you can attend!
+            </FormTitle>
+            <FormWrapper>
+              {(tag === "all events" && side === "bride") ||
+              (tag === "pithi" && side === "bride") ? (
                 <EventRSVPWrapper>
-                  <EventTitle>Groom's Pithi</EventTitle>
+                  <EventTitle>Bride's Pithi</EventTitle>
                   <EventQuestionWrapper>
                     <YesNoWrapper>
                       <YesNoTitle>Can you attend?</YesNoTitle>
                       <AttendanceWrapper>
                         <YesNo>Yes</YesNo>
                         <YesNoInput
-                          checked={groomsPithi.attending === "yes"}
+                          checked={bridesPithi.attending === "yes"}
                           value="yes"
                           type="radio"
-                          onChange={groomsPithiAttendanceHandler}
+                          onChange={bridesPithiAttendanceHandler}
                         />
                       </AttendanceWrapper>
                       <AttendanceWrapper>
                         <YesNo>No</YesNo>
                         <YesNoInput
-                          checked={groomsPithi.attending === "no"}
+                          checked={bridesPithi.attending === "no"}
                           value="no"
                           type="radio"
-                          onChange={groomsPithiAttendanceHandler}
+                          onChange={bridesPithiAttendanceHandler}
                         />
                       </AttendanceWrapper>
                     </YesNoWrapper>
@@ -662,8 +657,8 @@ const RSVPPage = ({ data }) => {
                         Number of family members who can attend?
                       </FamilyMemberText>
                       <FamilyMemberInput
-                        value={groomsPithi.numOfFamily}
-                        onChange={groomsPithiFamilyHandler}
+                        value={bridesPithi.numOfFamily}
+                        onChange={bridesPithiFamilyHandler}
                       >
                         <option value="0">0</option>
                         <option value="1">1</option>
@@ -673,99 +668,144 @@ const RSVPPage = ({ data }) => {
                     </FamilyMembersWrapper>
                   </EventQuestionWrapper>
                 </EventRSVPWrapper>
-              ))}
-            {(tag === "all events" ||
-              tag === "wedding" ||
-              tag === "wedding and reception") && (
-              <EventRSVPWrapper>
-                <EventTitle>Wedding</EventTitle>
-                <EventQuestionWrapper>
-                  <YesNoWrapper>
-                    <YesNoTitle>Can you attend?</YesNoTitle>
-                    <AttendanceWrapper>
-                      <YesNo>Yes</YesNo>
-                      <YesNoInput
-                        checked={wedding.attending === "yes"}
-                        value="yes"
-                        type="radio"
-                        onChange={weddingAttendanceHandler}
-                      />
-                    </AttendanceWrapper>
-                    <AttendanceWrapper>
-                      <YesNo>No</YesNo>
-                      <YesNoInput
-                        checked={wedding.attending === "no"}
-                        value="no"
-                        type="radio"
-                        onChange={weddingAttendanceHandler}
-                      />
-                    </AttendanceWrapper>
-                  </YesNoWrapper>
-                  <FamilyMembersWrapper>
-                    <FamilyMemberText>
-                      Number of family members who can attend?
-                    </FamilyMemberText>
-                    <FamilyMemberInput
-                      value={wedding.numOfFamily}
-                      onChange={weddingFamilyHandler}
-                    >
-                      <option value="0">0</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                    </FamilyMemberInput>
-                  </FamilyMembersWrapper>
-                </EventQuestionWrapper>
-              </EventRSVPWrapper>
-            )}
-            {(tag === "all events" ||
-              tag === "reception" ||
-              tag === "wedding and reception") && (
-              <EventRSVPWrapper>
-                <EventTitle>Reception</EventTitle>
-                <EventQuestionWrapper>
-                  <YesNoWrapper>
-                    <YesNoTitle>Can you attend?</YesNoTitle>
-                    <AttendanceWrapper>
-                      <YesNo>Yes</YesNo>
-                      <YesNoInput
-                        checked={reception.attending === "yes"}
-                        value="yes"
-                        type="radio"
-                        onChange={receptionAttendanceHandler}
-                      />
-                    </AttendanceWrapper>
-                    <AttendanceWrapper>
-                      <YesNo>No</YesNo>
-                      <YesNoInput
-                        checked={reception.attending === "no"}
-                        value="no"
-                        type="radio"
-                        onChange={receptionAttendanceHandler}
-                      />
-                    </AttendanceWrapper>
-                  </YesNoWrapper>
-                  <FamilyMembersWrapper>
-                    <FamilyMemberText>
-                      Number of family members who can attend?
-                    </FamilyMemberText>
-                    <FamilyMemberInput
-                      value={reception.numOfFamily}
-                      onChange={receptionFamilyHandler}
-                    >
-                      <option value="0">0</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                    </FamilyMemberInput>
-                  </FamilyMembersWrapper>
-                </EventQuestionWrapper>
-              </EventRSVPWrapper>
-            )}
-            <InputButton onClick={submitInfo}>Submit</InputButton>
-          </FormWrapper>
-        </FormContainer>
-      )}
+              ) : (
+                <></>
+              )}
+              {(tag === "all events" && side === "groom") ||
+                (tag === "pithi" && side === "groom" && (
+                  <EventRSVPWrapper>
+                    <EventTitle>Groom's Pithi</EventTitle>
+                    <EventQuestionWrapper>
+                      <YesNoWrapper>
+                        <YesNoTitle>Can you attend?</YesNoTitle>
+                        <AttendanceWrapper>
+                          <YesNo>Yes</YesNo>
+                          <YesNoInput
+                            checked={groomsPithi.attending === "yes"}
+                            value="yes"
+                            type="radio"
+                            onChange={groomsPithiAttendanceHandler}
+                          />
+                        </AttendanceWrapper>
+                        <AttendanceWrapper>
+                          <YesNo>No</YesNo>
+                          <YesNoInput
+                            checked={groomsPithi.attending === "no"}
+                            value="no"
+                            type="radio"
+                            onChange={groomsPithiAttendanceHandler}
+                          />
+                        </AttendanceWrapper>
+                      </YesNoWrapper>
+                      <FamilyMembersWrapper>
+                        <FamilyMemberText>
+                          Number of family members who can attend?
+                        </FamilyMemberText>
+                        <FamilyMemberInput
+                          value={groomsPithi.numOfFamily}
+                          onChange={groomsPithiFamilyHandler}
+                        >
+                          <option value="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                        </FamilyMemberInput>
+                      </FamilyMembersWrapper>
+                    </EventQuestionWrapper>
+                  </EventRSVPWrapper>
+                ))}
+              {(tag === "all events" ||
+                tag === "wedding" ||
+                tag === "wedding and reception") && (
+                <EventRSVPWrapper>
+                  <EventTitle>Wedding</EventTitle>
+                  <EventQuestionWrapper>
+                    <YesNoWrapper>
+                      <YesNoTitle>Can you attend?</YesNoTitle>
+                      <AttendanceWrapper>
+                        <YesNo>Yes</YesNo>
+                        <YesNoInput
+                          checked={wedding.attending === "yes"}
+                          value="yes"
+                          type="radio"
+                          onChange={weddingAttendanceHandler}
+                        />
+                      </AttendanceWrapper>
+                      <AttendanceWrapper>
+                        <YesNo>No</YesNo>
+                        <YesNoInput
+                          checked={wedding.attending === "no"}
+                          value="no"
+                          type="radio"
+                          onChange={weddingAttendanceHandler}
+                        />
+                      </AttendanceWrapper>
+                    </YesNoWrapper>
+                    <FamilyMembersWrapper>
+                      <FamilyMemberText>
+                        Number of family members who can attend?
+                      </FamilyMemberText>
+                      <FamilyMemberInput
+                        value={wedding.numOfFamily}
+                        onChange={weddingFamilyHandler}
+                      >
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                      </FamilyMemberInput>
+                    </FamilyMembersWrapper>
+                  </EventQuestionWrapper>
+                </EventRSVPWrapper>
+              )}
+              {(tag === "all events" ||
+                tag === "reception" ||
+                tag === "wedding and reception") && (
+                <EventRSVPWrapper>
+                  <EventTitle>Reception</EventTitle>
+                  <EventQuestionWrapper>
+                    <YesNoWrapper>
+                      <YesNoTitle>Can you attend?</YesNoTitle>
+                      <AttendanceWrapper>
+                        <YesNo>Yes</YesNo>
+                        <YesNoInput
+                          checked={reception.attending === "yes"}
+                          value="yes"
+                          type="radio"
+                          onChange={receptionAttendanceHandler}
+                        />
+                      </AttendanceWrapper>
+                      <AttendanceWrapper>
+                        <YesNo>No</YesNo>
+                        <YesNoInput
+                          checked={reception.attending === "no"}
+                          value="no"
+                          type="radio"
+                          onChange={receptionAttendanceHandler}
+                        />
+                      </AttendanceWrapper>
+                    </YesNoWrapper>
+                    <FamilyMembersWrapper>
+                      <FamilyMemberText>
+                        Number of family members who can attend?
+                      </FamilyMemberText>
+                      <FamilyMemberInput
+                        value={reception.numOfFamily}
+                        onChange={receptionFamilyHandler}
+                      >
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                      </FamilyMemberInput>
+                    </FamilyMembersWrapper>
+                  </EventQuestionWrapper>
+                </EventRSVPWrapper>
+              )}
+              <InputButton onClick={submitInfo}>Submit</InputButton>
+            </FormWrapper>
+          </FormContainer>
+        )}
     </RSVPContainer>
   )
 }
