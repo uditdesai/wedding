@@ -392,17 +392,11 @@ const AttireText = styled.p`
 `
 
 const WeddingPage = () => {
-  const [currentUrl, setCurrentUrl] = useState("")
-
-  useEffect(() => {
-    if (typeof window == "undefined") return
-    setCurrentUrl(window.location.href)
-  }, [])
   return (
     <>
       <EventsContainer>
         <StartContainer>
-          <StyledLink to="/" state={{ currentUrl: currentUrl }}>
+          <StyledLink to="/">
             <BackLink>Back to the Wedding</BackLink>
           </StyledLink>
           <EventTitle>Wedding</EventTitle>

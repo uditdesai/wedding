@@ -392,17 +392,11 @@ const AttireText = styled.p`
 `
 
 const BridesPithiPage = () => {
-  const [currentUrl, setCurrentUrl] = useState("")
-
-  useEffect(() => {
-    if (typeof window == "undefined") return
-    setCurrentUrl(window.location.href)
-  }, [])
   return (
     <>
       <EventsContainer>
         <StartContainer>
-          <StyledLink to="/" state={{ currentUrl: currentUrl }}>
+          <StyledLink to="/">
             <BackLink>Back to the Wedding</BackLink>
           </StyledLink>
           <EventTitle>Brides's Ganesh Puja, Grah Shanti, and Pithi</EventTitle>

@@ -653,31 +653,9 @@ const FooterTitle = styled.h1`
   }
 `
 
-const IndexPage = props => {
+const IndexPage = () => {
   // width and height of screen
   const { width } = useWindowSize()
-  const [prevUrl, setPrevUrl] = useState("")
-
-  useEffect(() => {
-    if (props.location.state) {
-      setPrevUrl(props.location.state.currentUrl)
-      console.log(props.location.state.currentUrl)
-    }
-  }, [])
-
-  useEffect(() => {
-    if (
-      prevUrl.includes("garba") ||
-      prevUrl.includes("brides-pithi") ||
-      prevUrl.includes("mehndi") ||
-      prevUrl.includes("grooms-pithi") ||
-      prevUrl.includes("wedding") ||
-      prevUrl.includes("reception")
-    ) {
-      let elmt = document.getElementById("eventsContainer")
-      elmt.scrollIntoView({ behavior: "smooth" })
-    }
-  }, [prevUrl])
 
   const scrollDown = () => {
     let elmt = document.getElementById("rsvpContainer")
