@@ -22,7 +22,6 @@ import KathanRichaChandla from "../images/kathan-richa-chandla.jpg"
 import Family from "../images/family-extended.jpg"
 
 import Garba from "../images/garba.jpg"
-import Haldi from "../images/haldi.jpg"
 import Mehndi from "../images/mehndi.jpg"
 import Wedding from "../images/wedding.jpg"
 import Reception from "../images/reception.jpg"
