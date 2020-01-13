@@ -396,9 +396,9 @@ const EventSquareStartTitle = styled.h4`
 `
 
 const EventSquareTitle = styled.h4`
-  width: 80%;
+  width: 85%;
   font-family: "Judson-Bold";
-  font-size: 20px;
+  font-size: 22px;
   color: white;
   text-align: center;
   margin: 0 0 15px 0;
@@ -410,9 +410,9 @@ const EventSquareTitle = styled.h4`
 `
 
 const EventSquareSubtitle = styled.p`
-  width: 80%;
+  width: 85%;
   font-family: "Judson-Regular";
-  font-size: 14px;
+  font-size: 16px;
   color: white;
   text-align: center;
   margin: 0 0 5px 0;
@@ -424,12 +424,26 @@ const EventSquareSubtitle = styled.p`
 `
 
 const EventSquareDesc = styled.p`
-  width: 80%;
-  font-family: "Judson-Regular";
-  font-size: 12px;
+  width: 85%;
+  font-family: "Judson-Italic";
+  font-size: 14px;
   color: white;
   text-align: center;
   margin: 5px 0 0 0;
+  opacity: 0;
+
+  @media (max-width: 800px) {
+    opacity: 1;
+  }
+`
+
+const EventSquarePrompt = styled.p`
+  width: 85%;
+  font-family: "Judson-Regular";
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  margin: 20px 0 0 0;
   opacity: 0;
 
   @media (max-width: 800px) {
@@ -643,7 +657,7 @@ const FooterWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 400px;
+  width: 650px;
 
   @media (max-width: 800px) {
     width: 90%;
@@ -651,8 +665,8 @@ const FooterWrapper = styled.div`
 `
 
 const FooterButton = styled.button`
-  width: 120px;
-  height: 45px;
+  width: 200px;
+  height: 60px;
   border-radius: 5px;
   background: #91677d;
   color: white;
@@ -661,7 +675,7 @@ const FooterButton = styled.button`
   justify-content: center;
   align-items: center;
   font-family: "Judson-Bold";
-  font-size: 18px;
+  font-size: 22px;
   color: white;
   cursor: pointer;
   transition: box-shadow 0.5s ease;
@@ -672,8 +686,9 @@ const FooterButton = styled.button`
   }
 
   @media (max-width: 800px) {
-    font-size: 14px;
+    font-size: 16px;
     width: 100px;
+    height: 40px;
   }
 `
 
@@ -683,15 +698,38 @@ const FooterTitle = styled.h1`
   color: white;
   padding: 50px 0 50px 0;
   margin: 0;
+  width: 60%;
 
   @media (max-width: 800px) {
-    font-size: 18px;
+    font-size: 16px;
   }
 `
 
 const IndexPage = () => {
   // width and height of screen
   const { width } = useWindowSize()
+  const [firstDigit, setFirstDigit] = useState(0)
+  const [secondDigit, setSecondDigit] = useState(0)
+  const [thirdDigit, setThirdDigit] = useState(0)
+
+  useEffect(() => {
+    let one_day = 1000 * 60 * 60 * 24
+    let pres_day = new Date()
+    let wedding_day = new Date(pres_day.getFullYear(), 5, 25)
+    let result =
+      Math.round(wedding_day.getTime() - pres_day.getTime()) / one_day
+    var final_result = result.toFixed(0)
+
+    if (final_result >= 100) {
+      setFirstDigit(final_result.toString()[0])
+      setSecondDigit(final_result.toString()[1])
+      setThirdDigit(final_result.toString()[2])
+    } else {
+      setFirstDigit(0)
+      setSecondDigit(final_result.toString()[0])
+      setThirdDigit(final_result.toString()[1])
+    }
+  }, [])
 
   const scrollDown = () => {
     let elmt = document.getElementById("rsvpContainer")
@@ -733,13 +771,13 @@ const IndexPage = () => {
             <RSVPTitle>It's Desaided!</RSVPTitle>
             <RSVPDateContainer>
               <DateCard>
-                <RSVPDate>2</RSVPDate>
+                <RSVPDate>{firstDigit}</RSVPDate>
               </DateCard>
               <DateCard>
-                <RSVPDate>1</RSVPDate>
+                <RSVPDate>{secondDigit}</RSVPDate>
               </DateCard>
               <DateCard>
-                <RSVPDate>7</RSVPDate>
+                <RSVPDate>{thirdDigit}</RSVPDate>
               </DateCard>
             </RSVPDateContainer>
             <RSVPDateSubText>Days until the wedding!</RSVPDateSubText>
@@ -790,6 +828,9 @@ const IndexPage = () => {
                   Ae halo! It’s an evening of hatke dance performances, tasty
                   street food and classic garba! Bhai Bhai!
                 </EventSquareDesc>
+                <EventSquarePrompt className="eventText1">
+                  Click for more information!
+                </EventSquarePrompt>
               </EventOverlay>
             </EventSquare>
           </StyledLink>
@@ -825,6 +866,9 @@ const IndexPage = () => {
                   soon-to-be-married couple. During the pithi, the bride will be
                   covered in haldi to make the skin glow for the big day!
                 </EventSquareDesc>
+                <EventSquarePrompt className="eventText2">
+                  Click for more information!
+                </EventSquarePrompt>
               </EventOverlay>
             </EventSquare>
           </StyledLink>
@@ -859,6 +903,9 @@ const IndexPage = () => {
                   Mehndi laga ke rakhna! A musical night of singing wedding
                   songs and getting your henna on!
                 </EventSquareDesc>
+                <EventSquarePrompt className="eventText3">
+                  Click for more information!
+                </EventSquarePrompt>
               </EventOverlay>
             </EventSquare>
           </StyledLink>
@@ -893,6 +940,9 @@ const IndexPage = () => {
                   A day of pre-wedding functions to bring good luck to the
                   couple and get the groom ready for the big day.
                 </EventSquareDesc>
+                <EventSquarePrompt className="eventText4">
+                  Click for more information!
+                </EventSquarePrompt>
               </EventOverlay>
             </EventSquare>
           </StyledLink>
@@ -928,6 +978,9 @@ const IndexPage = () => {
                   entrance. Hindu wedding ceremony of hasta melap, mangal phera
                   and sapta padi to tie the knot. Followed by the bride's vidai.
                 </EventSquareDesc>
+                <EventSquarePrompt className="eventText5">
+                  Click for more information!
+                </EventSquarePrompt>
               </EventOverlay>
             </EventSquare>
           </StyledLink>
@@ -962,6 +1015,9 @@ const IndexPage = () => {
                   Let’s nacho! Abhi toh party shuru hui haii! Auntyji auntyji,
                   get up and dance! Say Shava Shava! It's the time to disco!
                 </EventSquareDesc>
+                <EventSquarePrompt className="eventText6">
+                  Click for more information!
+                </EventSquarePrompt>
               </EventOverlay>
             </EventSquare>
           </StyledLink>
@@ -1004,7 +1060,10 @@ const IndexPage = () => {
       </StoryContainer>
       <Footer>
         <FooterWrapper>
-          <FooterTitle>#KathanGetsRich</FooterTitle>
+          <FooterTitle>
+            Use #KathanGetsRich and tag us @richagram and @hashtagkathan when
+            sharing your memories!
+          </FooterTitle>
           <StyledLink to="/rsvp">
             <FooterButton>RSVP</FooterButton>
           </StyledLink>
