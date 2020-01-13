@@ -40,6 +40,13 @@
     url("../fonts/Judson-Bold.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "Judson-Italic";
+  font-style: normal;
+  src: local("Judson-Italic"), local("Judson-Italic"),
+    url("../fonts/Judson-Italic.ttf") format("truetype");
+}
+
 html,
 body {
   margin: 0;

@@ -35,7 +35,7 @@ const RSVPContainer = styled.div`
 
 const BackLink = styled.p`
   font-family: "OpenSans-Regular";
-  font-size: 14px;
+  font-size: 18px;
   width: 700px;
   color: black;
   text-decoration: underline;
@@ -611,7 +611,7 @@ const RSVPPage = ({ data }) => {
             </InputErrorMessage>
             <InputErrorMessage>
               If you think we've made a mistake please email us at
-              guests@kathangetsrich.com!
+              kathangetsrich@gmail.com!
             </InputErrorMessage>
             <InputButton onClick={submitName}>Submit</InputButton>
           </FormWrapper>
@@ -622,14 +622,14 @@ const RSVPPage = ({ data }) => {
         editScreen === false && (
           <FormContainer>
             <FormTitle>
-              You and your family are invited to the following wedding events,
-              let us know which you can attend!
+              You are invited to the following wedding events, let us know if
+              you can attend!
             </FormTitle>
             <FormWrapper>
               {(tag === "all events" && side === "bride") ||
               (tag === "pithi" && side === "bride") ? (
                 <EventRSVPWrapper>
-                  <EventTitle>Bride's Pithi</EventTitle>
+                  <EventTitle>Bride's Grah Shanti</EventTitle>
                   <EventQuestionWrapper>
                     <YesNoWrapper>
                       <YesNoTitle>Can you attend?</YesNoTitle>
@@ -674,7 +674,7 @@ const RSVPPage = ({ data }) => {
               {(tag === "all events" && side === "groom") ||
                 (tag === "pithi" && side === "groom" && (
                   <EventRSVPWrapper>
-                    <EventTitle>Groom's Pithi</EventTitle>
+                    <EventTitle>Groom's Grah Shanti</EventTitle>
                     <EventQuestionWrapper>
                       <YesNoWrapper>
                         <YesNoTitle>Can you attend?</YesNoTitle>

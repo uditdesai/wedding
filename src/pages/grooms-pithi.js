@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 
-import Garba from "../images/garba.jpg"
+import GroomsPithi from "../images/grooms-pithi.jpg"
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -17,7 +17,7 @@ const EventsContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #bbdefb;
+  background: #ad95a2;
 
   @media (max-height: 675px) {
     justify-content: flex-start;
@@ -41,9 +41,38 @@ const StartContainer = styled.div`
   }
 `
 
+const LinkContainer = styled.div`
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+`
+
+const LinkButton = styled.div`
+  width: 160px;
+  height: 50px;
+  font-family: "Judson-Bold";
+  color: white;
+  background: #5e354a;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+
+  transition: box-shadow 0.5s ease;
+
+  &:hover {
+    box-shadow: 1px 3px 11px rgba(33, 33, 33, 0.3);
+  }
+`
+
 const BackLink = styled.p`
   font-family: "Judson-Bold";
-  font-size: 14px;
+  font-size: 18px;
   color: black;
   text-decoration: underline;
   margin: 0;
@@ -59,7 +88,7 @@ const BackLink = styled.p`
 
 const EventTitle = styled.h1`
   font-family: "Judson-Bold";
-  font-size: 58px;
+  font-size: 64px;
   color: black;
   margin: 20px 0 0 0;
 `
@@ -96,7 +125,7 @@ const BannerContainer = styled.div`
 const DateContainer = styled.div`
   width: 100%;
   height: 70px;
-  background: #474594;
+  background: #5e354a;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -150,7 +179,7 @@ const DateSmallText = styled.p`
 const DateMediumText = styled.p`
   font-family: "Judson-Bold";
   font-size: 14px;
-  width: 90px;
+  width: 110px;
   color: white;
   margin: 0 0 -10px 0;
 
@@ -161,10 +190,11 @@ const DateMediumText = styled.p`
 `
 
 const BannerImage = styled.img`
-  width: calc(100% - 10px);
+  width: 100%;
   height: 400px;
   object-fit: cover;
-  border: 5px solid #474594;
+  /* border: 5px solid #474594; */
+  box-shadow: 1px 3px 11px rgba(33, 33, 33, 0.3);
 
   @media (max-width: 1100px) {
     height: 250px;
@@ -175,11 +205,12 @@ const ScheduleContainer = styled.div`
   width: 32%;
   display: flex;
   flex-direction: column;
-  border: 5px solid #474594;
+  /* border: 5px solid #474594; */
   margin: 0 2% 0 2%;
   box-sizing: border-box;
   padding: 30px;
   background: white;
+  box-shadow: 1px 3px 11px rgba(33, 33, 33, 0.3);
 
   @media (max-width: 1200px) {
     padding: 25px;
@@ -273,11 +304,12 @@ const LocationContainer = styled.div`
   height: 48%;
   display: flex;
   flex-direction: column;
-  border: 5px solid #474594;
+  /* border: 5px solid #474594; */
   box-sizing: border-box;
   padding: 30px;
   margin: 0 0 20px 0;
   background: white;
+  box-shadow: 1px 3px 11px rgba(33, 33, 33, 0.3);
 
   @media (max-width: 1200px) {
     padding: 25px;
@@ -351,10 +383,11 @@ const AttireContainer = styled.div`
   height: 48%;
   display: flex;
   flex-direction: column;
-  border: 5px solid #474594;
+  /* border: 5px solid #474594; */
   box-sizing: border-box;
   padding: 30px;
   background: white;
+  box-shadow: 1px 3px 11px rgba(33, 33, 33, 0.3);
 
   @media (max-width: 1200px) {
     padding: 25px;
@@ -396,10 +429,15 @@ const GroomsPithiPage = () => {
     <>
       <EventsContainer>
         <StartContainer>
-          <StyledLink to="/">
-            <BackLink>Back to the Wedding</BackLink>
-          </StyledLink>
-          <EventTitle>Groom's Ganesh Puja, Grah Shanti, and Pithi</EventTitle>
+          <LinkContainer>
+            <StyledLink to="/">
+              <BackLink>Back to the Wedding</BackLink>
+            </StyledLink>
+            <StyledLink to="/rsvp">
+              <LinkButton>RSVP</LinkButton>
+            </StyledLink>
+          </LinkContainer>
+          <EventTitle>Groom's Pithi, Grah Shanti, and Mehndi</EventTitle>
         </StartContainer>
         <ContentContainer>
           <BannerContainer>
@@ -416,7 +454,7 @@ const GroomsPithiPage = () => {
                 <DateMediumText>Groom's Family Residence</DateMediumText>
               </DateWrapper>
             </DateContainer>
-            <BannerImage src={Garba} />
+            <BannerImage src={GroomsPithi} />
           </BannerContainer>
           <ScheduleContainer>
             <ScheduleTitle>Schedule</ScheduleTitle>

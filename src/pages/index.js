@@ -10,11 +10,24 @@ import LandingMobile from "../images/landingMobile.png"
 
 import Down from "../images/down.png"
 
+import KathanBaby from "../images/kathan-baby.jpg"
+import KathanKid from "../images/kathan-kid.jpg"
+import RichaBaby from "../images/richa-baby.jpg"
+import RichaKid from "../images/richa-kid.jpg"
+import RichaGrad from "../images/richa-grad.jpg"
+import KathanGrad from "../images/kathan-grad.jpg"
+import KathanRichaHalloween from "../images/kathan-richa-halloween.jpg"
+import RichaKathanToronto from "../images/richa-kathan-toronto.jpg"
+import KathanRichaChandla from "../images/kathan-richa-chandla.jpg"
+import Family from "../images/family-extended.jpg"
+
 import Garba from "../images/garba.jpg"
 import Haldi from "../images/haldi.jpg"
 import Mehndi from "../images/mehndi.jpg"
 import Wedding from "../images/wedding.jpg"
 import Reception from "../images/reception.jpg"
+import BridesPithi from "../images/brides-pithi.jpg"
+import GroomsPithi from "../images/grooms-pithi.jpg"
 
 const C = CSSPlugin
 
@@ -47,10 +60,24 @@ const LandingGradientOverlay = styled.div`
   width: 100%;
   height: 100vh;
   background: rgb(103, 77, 0);
+  /* background: linear-gradient(
+    180deg,
+    rgba(103, 77, 0, 0) 0%,
+    rgba(253, 218, 178, 1) 100%
+  ); */
+
+  /* background: rgb(103, 77, 0);
   background: linear-gradient(
     0deg,
     rgba(103, 77, 0, 1) 0%,
     rgba(252, 196, 147, 0) 100%
+  ); */
+
+  background: rgb(103, 77, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(154, 136, 82, 1) 0%,
+    rgba(255, 220, 189, 0) 100%
   );
   z-index: 2;
   display: flex;
@@ -200,7 +227,7 @@ const RSVPDateContainer = styled.div`
 const DateCard = styled.div`
   width: 31%;
   height: 170px;
-  background: #88dcf8;
+  background: #94a5c3;
   border-radius: 10px;
   display: flex;
   justify-content: center;
@@ -244,7 +271,7 @@ const RSVPSectionButton = styled.button`
   height: 60px;
   font-family: "Judson-Bold";
   color: black;
-  background: #88dcf8;
+  background: #94a5c3;
   font-size: 32px;
   display: flex;
   justify-content: center;
@@ -282,7 +309,7 @@ const RSVPEnding = styled.h1`
 
 const EventsContainer = styled.div`
   width: 100%;
-  background-color: #fce4ec;
+  background-color: #fd9f93;
 `
 
 const EventsTitle = styled.h1`
@@ -420,7 +447,7 @@ const StoryContainer = styled.div`
 const StoryTitle = styled.h1`
   font-family: "Judson-Bold";
   font-size: 64px;
-  color: #474594;
+  color: #5f3e73;
   width: 100%;
   text-align: center;
   padding: 75px 0 60px 0;
@@ -444,20 +471,22 @@ const StorySection = styled.div`
 `
 
 const LastStoryImg = styled.div`
-  width: 600px;
-  height: 600px;
+  width: 900px;
+  height: 550px;
   background: grey;
   border-radius: 50%;
   margin: 0 auto 100px auto;
+  background: url(${Family}) no-repeat center center;
+  background-size: cover;
 
   @media (max-width: 800px) {
     width: 330px;
-    height: 330px;
+    height: 220px;
     margin: 0 auto 50px auto;
   }
 `
 
-const StoryImg1Left = styled.div`
+const StoryImg1Left = styled.img`
   width: 400px;
   height: 400px;
   background: grey;
@@ -465,6 +494,7 @@ const StoryImg1Left = styled.div`
   position: absolute;
   top: ${props => `${props.top}px`};
   right: ${props => `${props.right}%`};
+  object-fit: cover;
 
   @media (max-width: 800px) {
     width: 165px;
@@ -474,7 +504,7 @@ const StoryImg1Left = styled.div`
   }
 `
 
-const StoryImg1Right = styled.div`
+const StoryImg1Right = styled.img`
   width: 400px;
   height: 400px;
   background: grey;
@@ -482,6 +512,7 @@ const StoryImg1Right = styled.div`
   position: absolute;
   top: ${props => `${props.top}px`};
   left: ${props => `${props.right}%`};
+  object-fit: cover;
 
   @media (max-width: 800px) {
     width: 165px;
@@ -491,7 +522,7 @@ const StoryImg1Right = styled.div`
   }
 `
 
-const StoryImg2Left = styled.div`
+const StoryImg2Left = styled.img`
   width: 300px;
   height: 300px;
   background: grey;
@@ -499,6 +530,7 @@ const StoryImg2Left = styled.div`
   position: absolute;
   top: ${props => `${props.top}px`};
   right: ${props => `${props.right}%`};
+  object-fit: cover;
 
   @media (max-width: 800px) {
     width: 145px;
@@ -508,7 +540,7 @@ const StoryImg2Left = styled.div`
   }
 `
 
-const StoryImg2Right = styled.div`
+const StoryImg2Right = styled.img`
   width: 300px;
   height: 300px;
   background: grey;
@@ -516,6 +548,7 @@ const StoryImg2Right = styled.div`
   position: absolute;
   top: ${props => `${props.top}px`};
   left: ${props => `${props.right}%`};
+  object-fit: cover;
 
   @media (max-width: 800px) {
     width: 145px;
@@ -525,7 +558,7 @@ const StoryImg2Right = styled.div`
   }
 `
 
-const StoryImg3Left = styled.div`
+const StoryImg3Left = styled.img`
   width: 450px;
   height: 450px;
   background: grey;
@@ -533,6 +566,7 @@ const StoryImg3Left = styled.div`
   position: absolute;
   top: ${props => `${props.top}px`};
   right: ${props => `${props.right}%`};
+  object-fit: cover;
 
   @media (max-width: 800px) {
     width: 185px;
@@ -542,7 +576,7 @@ const StoryImg3Left = styled.div`
   }
 `
 
-const StoryImg3Right = styled.div`
+const StoryImg3Right = styled.img`
   width: 450px;
   height: 450px;
   background: grey;
@@ -551,6 +585,7 @@ const StoryImg3Right = styled.div`
   top: ${props => `${props.top}px`};
   left: ${props => `${props.right}%`};
   left: ${props => `${props.right - 3}%`};
+  object-fit: cover;
 
   @media (max-width: 800px) {
     width: 185px;
@@ -560,7 +595,7 @@ const StoryImg3Right = styled.div`
   }
 `
 
-const StoryImg4Left = styled.div`
+const StoryImg4Left = styled.img`
   width: 350px;
   height: 350px;
   background: grey;
@@ -568,6 +603,7 @@ const StoryImg4Left = styled.div`
   position: absolute;
   top: ${props => `${props.top}px`};
   right: ${props => `${props.right}%`};
+  object-fit: cover;
 
   @media (max-width: 800px) {
     width: 165px;
@@ -577,7 +613,7 @@ const StoryImg4Left = styled.div`
   }
 `
 
-const StoryImg4Right = styled.div`
+const StoryImg4Right = styled.img`
   width: 350px;
   height: 350px;
   background: grey;
@@ -585,6 +621,7 @@ const StoryImg4Right = styled.div`
   position: absolute;
   top: ${props => `${props.top}px`};
   left: ${props => `${props.right}%`};
+  object-fit: cover;
 
   @media (max-width: 800px) {
     width: 165px;
@@ -596,7 +633,7 @@ const StoryImg4Right = styled.div`
 
 const Footer = styled.div`
   width: 100%;
-  background: #474594;
+  background: #91677d;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -618,7 +655,7 @@ const FooterButton = styled.button`
   width: 120px;
   height: 45px;
   border-radius: 5px;
-  background: #474594;
+  background: #91677d;
   color: white;
   border: 2px solid white;
   display: flex;
@@ -706,13 +743,13 @@ const IndexPage = () => {
                 <RSVPDate>7</RSVPDate>
               </DateCard>
             </RSVPDateContainer>
-            <RSVPDateSubText>Days till the wedding</RSVPDateSubText>
+            <RSVPDateSubText>Days until the wedding!</RSVPDateSubText>
           </RSVPInnerSection>
           <RSVPInnerSectionTwo>
-            <RSVPTitle>Shaadi mein zaroor aana!</RSVPTitle>
+            <RSVPTitle>Shaadi Mein Zaroor Aana!</RSVPTitle>
             <RSVPInvitationText>
-              Celebrate Richa and Kathan’s wedding as they take on a new chapter
-              of their lives
+              Celebrate with Richa and Kathan as they take on a new chapter of
+              their lives!
             </RSVPInvitationText>
             <StyledLink to="/rsvp">
               <RSVPSectionButton>RSVP</RSVPSectionButton>
@@ -745,22 +782,21 @@ const IndexPage = () => {
                   Thursday, June 25, 2020
                 </EventSquareSubtitle>
                 <EventSquareSubtitle className="eventText1">
-                  Grand Galaxy Banquet Hall
+                  Grand Galaxy Convention Centre
                 </EventSquareSubtitle>
                 <EventSquareSubtitle className="eventText1">
                   . . .
                 </EventSquareSubtitle>
                 <EventSquareDesc className="eventText1">
-                  Celebrate before the wedding with us during the Garba and
-                  Sangeet where we'll have great dance perfomrances, classic
-                  garba, and bollywood music!
+                  Ae halo! It’s an evening of hatke dance performances, tasty
+                  street food and classic garba! Bhai Bhai!
                 </EventSquareDesc>
               </EventOverlay>
             </EventSquare>
           </StyledLink>
           <StyledLink to="/brides-pithi">
             <EventSquare>
-              <EventImg src={Haldi} />
+              <EventImg src={BridesPithi} />
               <EventOverlay
                 onMouseEnter={() => {
                   hoverEvent(2)
@@ -771,7 +807,7 @@ const IndexPage = () => {
                 id="eventOverlay2"
               >
                 <EventSquareStartTitle id="eventStartTitle2">
-                  Bride's Ganesh Puja, Grah Shanti, and Pithi
+                  Bride's Ganesh Puja, Pithi, and Grah Shanti
                 </EventSquareStartTitle>
                 <EventSquareTitle className="eventText2">
                   Bride's Ganesh Puja, Grah Shanti, and Pithi
@@ -786,9 +822,9 @@ const IndexPage = () => {
                   . . .
                 </EventSquareSubtitle>
                 <EventSquareDesc className="eventText2">
-                  Celebrate before the wedding with us during the Garba and
-                  Sangeet where we'll have great dance perfomrances, classic
-                  garba, and bollywood music!
+                  A day of bringing happiness and prosperity for the
+                  soon-to-be-married couple. During the pithi, the bride will be
+                  covered in haldi to make the skin glow for the big day!
                 </EventSquareDesc>
               </EventOverlay>
             </EventSquare>
@@ -806,10 +842,10 @@ const IndexPage = () => {
                 id="eventOverlay3"
               >
                 <EventSquareStartTitle id="eventStartTitle3">
-                  Bride's Mehndi
+                  Bride's Mehndi Night
                 </EventSquareStartTitle>
                 <EventSquareTitle className="eventText3">
-                  Bride's Mehndi
+                  Bride's Mehndi Night
                 </EventSquareTitle>
                 <EventSquareSubtitle className="eventText3">
                   Friday, June 26, 2020
@@ -821,16 +857,15 @@ const IndexPage = () => {
                   . . .
                 </EventSquareSubtitle>
                 <EventSquareDesc className="eventText3">
-                  Celebrate before the wedding with us during the Garba and
-                  Sangeet where we'll have great dance perfomrances, classic
-                  garba, and bollywood music!
+                  Mehndi laga ke rakhna! A musical night of singing wedding
+                  songs and getting your henna on!
                 </EventSquareDesc>
               </EventOverlay>
             </EventSquare>
           </StyledLink>
           <StyledLink to="/grooms-pithi">
             <EventSquare>
-              <EventImg src={Haldi} />
+              <EventImg src={GroomsPithi} />
               <EventOverlay
                 onMouseEnter={() => {
                   hoverEvent(4)
@@ -841,10 +876,10 @@ const IndexPage = () => {
                 id="eventOverlay4"
               >
                 <EventSquareStartTitle id="eventStartTitle4">
-                  Groom's Ganesh Puja, Grah Shanti, and Pithi
+                  Groom's Pithi, Grah Shanti, and Mehndi
                 </EventSquareStartTitle>
                 <EventSquareTitle className="eventText4">
-                  Groom's Ganesh Puja, Grah Shanti, and Pithi
+                  Groom's Pithi, Grah Shanti, and Mehndi
                 </EventSquareTitle>
                 <EventSquareSubtitle className="eventText4">
                   Friday, June 26, 2020
@@ -856,9 +891,8 @@ const IndexPage = () => {
                   . . .
                 </EventSquareSubtitle>
                 <EventSquareDesc className="eventText4">
-                  Celebrate before the wedding with us during the Garba and
-                  Sangeet where we'll have great dance perfomrances, classic
-                  garba, and bollywood music!
+                  A day of pre-wedding functions to bring good luck to the
+                  couple and get the groom ready for the big day.
                 </EventSquareDesc>
               </EventOverlay>
             </EventSquare>
@@ -876,24 +910,24 @@ const IndexPage = () => {
                 id="eventOverlay5"
               >
                 <EventSquareStartTitle id="eventStartTitle5">
-                  Wedding
+                  Wedding Ceremony
                 </EventSquareStartTitle>
                 <EventSquareTitle className="eventText5">
-                  Wedding
+                  Wedding Ceremony
                 </EventSquareTitle>
                 <EventSquareSubtitle className="eventText5">
                   Saturday, June 27, 2020
                 </EventSquareSubtitle>
                 <EventSquareSubtitle className="eventText5">
-                  Grand Galaxy Banquet Hall
+                  Embassy Grand Convention Centre
                 </EventSquareSubtitle>
                 <EventSquareSubtitle className="eventText5">
                   . . .
                 </EventSquareSubtitle>
                 <EventSquareDesc className="eventText5">
-                  Celebrate before the wedding with us during the Garba and
-                  Sangeet where we'll have great dance perfomrances, classic
-                  garba, and bollywood music!
+                  Dilwale dulhaniya leh jayenge! A baraat for the groom’s
+                  entrance. Hindu wedding ceremony of hasta melap, mangal phera
+                  and sapta padi to tie the knot. Followed by the bride's vidai.
                 </EventSquareDesc>
               </EventOverlay>
             </EventSquare>
@@ -920,15 +954,14 @@ const IndexPage = () => {
                   Sunday, June 28, 2020
                 </EventSquareSubtitle>
                 <EventSquareSubtitle className="eventText6">
-                  Grand Galaxy Banquet Hall
+                  Embassy Grand Convention Centre
                 </EventSquareSubtitle>
                 <EventSquareSubtitle className="eventText6">
                   . . .
                 </EventSquareSubtitle>
                 <EventSquareDesc className="eventText6">
-                  Celebrate before the wedding with us during the Garba and
-                  Sangeet where we'll have great dance perfomrances, classic
-                  garba, and bollywood music!
+                  Let’s nacho! Abhi toh party shuru hui haii! Auntyji auntyji,
+                  get up and dance! Say Shava Shava! It's the time to disco!
                 </EventSquareDesc>
               </EventOverlay>
             </EventSquare>
@@ -938,15 +971,35 @@ const IndexPage = () => {
       <StoryContainer>
         <StoryTitle>Hum Tum</StoryTitle>
         <StorySection>
-          <StoryImg1Left top={0} right={50}></StoryImg1Left>
-          <StoryImg2Right top={300} right={50}></StoryImg2Right>
-          <StoryImg3Left top={500} right={50}></StoryImg3Left>
-          <StoryImg4Right top={800} right={50}></StoryImg4Right>
-          <StoryImg2Left top={1050} right={50}></StoryImg2Left>
-          <StoryImg1Right top={1250} right={50}></StoryImg1Right>
-          <StoryImg4Left top={1500} right={50}></StoryImg4Left>
-          <StoryImg3Right top={1750} right={50}></StoryImg3Right>
-          <StoryImg1Left top={2000} right={50}></StoryImg1Left>
+          <StoryImg1Left top={0} right={50} src={RichaBaby}></StoryImg1Left>
+          <StoryImg2Right
+            top={300}
+            right={50}
+            src={KathanBaby}
+          ></StoryImg2Right>
+          <StoryImg3Left top={500} right={50} src={KathanKid}></StoryImg3Left>
+          <StoryImg4Right top={800} right={50} src={RichaKid}></StoryImg4Right>
+          <StoryImg2Left top={1050} right={50} src={KathanGrad}></StoryImg2Left>
+          <StoryImg1Right
+            top={1250}
+            right={50}
+            src={RichaGrad}
+          ></StoryImg1Right>
+          <StoryImg4Left
+            top={1500}
+            right={50}
+            src={KathanRichaHalloween}
+          ></StoryImg4Left>
+          <StoryImg3Right
+            top={1750}
+            right={50}
+            src={KathanRichaChandla}
+          ></StoryImg3Right>
+          <StoryImg1Left
+            top={2000}
+            right={50}
+            src={RichaKathanToronto}
+          ></StoryImg1Left>
         </StorySection>
         <LastStoryImg></LastStoryImg>
       </StoryContainer>

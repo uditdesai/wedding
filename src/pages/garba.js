@@ -17,7 +17,7 @@ const EventsContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #bbdefb;
+  background: #fddab2;
 
   @media (max-height: 675px) {
     justify-content: flex-start;
@@ -41,12 +41,11 @@ const StartContainer = styled.div`
   }
 `
 
-const BackLink = styled.p`
-  font-family: "Judson-Bold";
-  font-size: 14px;
-  color: black;
-  text-decoration: underline;
-  margin: 0;
+const LinkContainer = styled.div`
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
 
   @media (max-width: 1100px) {
     margin: 50px 0 0 0;
@@ -57,9 +56,39 @@ const BackLink = styled.p`
   }
 `
 
+const LinkButton = styled.div`
+  width: 160px;
+  height: 50px;
+  font-family: "Judson-Bold";
+  color: white;
+  background: #c76c02;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+
+  transition: box-shadow 0.5s ease;
+
+  &:hover {
+    box-shadow: 1px 3px 11px rgba(33, 33, 33, 0.3);
+  }
+`
+
+const BackLink = styled.p`
+  font-family: "Judson-Bold";
+  font-size: 18px;
+  color: black;
+  text-decoration: underline;
+  margin: 0;
+`
+
 const EventTitle = styled.h1`
   font-family: "Judson-Bold";
-  font-size: 64px;
+  font-size: 60px;
   color: black;
   margin: 20px 0 0 0;
 `
@@ -96,7 +125,7 @@ const BannerContainer = styled.div`
 const DateContainer = styled.div`
   width: 100%;
   height: 70px;
-  background: #474594;
+  background: #c76c02;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -149,8 +178,8 @@ const DateSmallText = styled.p`
 
 const DateMediumText = styled.p`
   font-family: "Judson-Bold";
-  font-size: 14px;
-  width: 90px;
+  font-size: 13px;
+  width: 110px;
   color: white;
   margin: 0 0 -10px 0;
 
@@ -161,13 +190,14 @@ const DateMediumText = styled.p`
 `
 
 const BannerImage = styled.img`
-  width: calc(100% - 10px);
+  width: 100%;
   height: 400px;
   object-fit: cover;
-  border: 5px solid #474594;
+  /* border: 5px solid #474594; */
+  box-shadow: 1px 3px 11px rgba(33, 33, 33, 0.3);
 
   @media (max-width: 1100px) {
-    height: 250px;
+    height: 400px;
   }
 `
 
@@ -175,11 +205,12 @@ const ScheduleContainer = styled.div`
   width: 32%;
   display: flex;
   flex-direction: column;
-  border: 5px solid #474594;
+  /* border: 5px solid #474594; */
   margin: 0 2% 0 2%;
   box-sizing: border-box;
   padding: 30px;
   background: white;
+  box-shadow: 1px 3px 11px rgba(33, 33, 33, 0.3);
 
   @media (max-width: 1200px) {
     padding: 25px;
@@ -206,6 +237,20 @@ const ScheduleTitle = styled.h1`
   }
 `
 
+const ScheduleDescription = styled.p`
+  font-family: "Judson-Italic";
+  font-size: 22px;
+  color: black;
+  margin: 0 0 30px 0;
+`
+
+const Divider = styled.div`
+  height: 2px;
+  width: 100%;
+  background: black;
+  margin: 0 0 30px 0;
+`
+
 const ScheduleWrapper = styled.div`
   display: flex;
   width: 100%;
@@ -217,7 +262,7 @@ const TimeWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin: 0 0 10px 0;
+  margin: 0 0 0px 0;
 
   @media (max-width: 1100px) {
     margin: 0;
@@ -226,7 +271,7 @@ const TimeWrapper = styled.div`
 
 const ScheduleTime = styled.p`
   font-family: "Judson-Regular";
-  font-size: 16px;
+  font-size: 18px;
   color: black;
 
   @media (max-width: 1200px) {
@@ -241,7 +286,7 @@ const ScheduleTime = styled.p`
 
 const ScheduleDesc = styled.p`
   font-family: "Judson-Regular";
-  font-size: 16px;
+  font-size: 18px;
   color: black;
   width: 180px;
   text-align: left;
@@ -273,11 +318,12 @@ const LocationContainer = styled.div`
   height: 48%;
   display: flex;
   flex-direction: column;
-  border: 5px solid #474594;
+  /* border: 5px solid #474594; */
   box-sizing: border-box;
   padding: 30px;
   margin: 0 0 20px 0;
   background: white;
+  box-shadow: 1px 3px 11px rgba(33, 33, 33, 0.3);
 
   @media (max-width: 1200px) {
     padding: 25px;
@@ -351,10 +397,11 @@ const AttireContainer = styled.div`
   height: 48%;
   display: flex;
   flex-direction: column;
-  border: 5px solid #474594;
+  /* border: 5px solid #474594; */
   box-sizing: border-box;
   padding: 30px;
   background: white;
+  box-shadow: 1px 3px 11px rgba(33, 33, 33, 0.3);
 
   @media (max-width: 1200px) {
     padding: 25px;
@@ -396,10 +443,15 @@ const GarbaPage = () => {
     <>
       <EventsContainer>
         <StartContainer>
-          <StyledLink to="/">
-            <BackLink>Back to the Wedding</BackLink>
-          </StyledLink>
-          <EventTitle>Garba</EventTitle>
+          <LinkContainer>
+            <StyledLink to="/">
+              <BackLink>Back to the Wedding</BackLink>
+            </StyledLink>
+            <StyledLink to="/rsvp">
+              <LinkButton>RSVP</LinkButton>
+            </StyledLink>
+          </LinkContainer>
+          <EventTitle>Garba and Sangeet</EventTitle>
         </StartContainer>
         <ContentContainer>
           <BannerContainer>
@@ -409,39 +461,34 @@ const GarbaPage = () => {
                 <DateSmallText>June 2020</DateSmallText>
               </DateWrapper>
               <MidDateWrapper>
-                <DateBigText>7:00</DateBigText>
+                <DateBigText>6:00</DateBigText>
                 <DateSmallText>PM</DateSmallText>
               </MidDateWrapper>
               <DateWrapper>
-                <DateMediumText>Grand Galaxy Banquet Hall</DateMediumText>
+                <DateMediumText>Grand Galaxy Convention Centre</DateMediumText>
               </DateWrapper>
             </DateContainer>
             <BannerImage src={Garba} />
           </BannerContainer>
           <ScheduleContainer>
+            <ScheduleDescription>
+              Ae halo! It’s an evening of hatke dance performances, tasty street
+              food and classic garba! Bhai Bhai!
+            </ScheduleDescription>
+            <Divider></Divider>
             <ScheduleTitle>Schedule</ScheduleTitle>
             <ScheduleWrapper>
               <TimeWrapper>
-                <ScheduleTime>6:30pm</ScheduleTime>
-                <ScheduleDesc>Guests start arriving</ScheduleDesc>
+                <ScheduleTime>6:00pm</ScheduleTime>
+                <ScheduleDesc>Appetizers and Dinner (Street food)</ScheduleDesc>
               </TimeWrapper>
               <TimeWrapper>
                 <ScheduleTime>7:00pm</ScheduleTime>
-                <ScheduleDesc>Food is ready to be taken</ScheduleDesc>
+                <ScheduleDesc>Performances</ScheduleDesc>
               </TimeWrapper>
               <TimeWrapper>
-                <ScheduleTime>7:30pm</ScheduleTime>
-                <ScheduleDesc>Program begins with performances</ScheduleDesc>
-              </TimeWrapper>
-              <TimeWrapper>
-                <ScheduleTime>8:30pm</ScheduleTime>
-                <ScheduleDesc>Garba starts now</ScheduleDesc>
-              </TimeWrapper>
-              <TimeWrapper>
-                <ScheduleTime>9:30pm</ScheduleTime>
-                <ScheduleDesc>
-                  Open dance floor begins. Be ready to party!
-                </ScheduleDesc>
+                <ScheduleTime>9:00pm</ScheduleTime>
+                <ScheduleDesc>Garba and Dancing</ScheduleDesc>
               </TimeWrapper>
             </ScheduleWrapper>
           </ScheduleContainer>
@@ -454,15 +501,18 @@ const GarbaPage = () => {
               <LocationText>
                 200 Advance Blvd, Brampton, ON L6T 4V5
               </LocationText>
-              <LocationLink href="https://www.google.ca/maps" target="_blank">
+              <LocationLink
+                href="https://goo.gl/maps/7gmuqnhtMZCt52rH8"
+                target="_blank"
+              >
                 See on Google Maps
               </LocationLink>
             </LocationContainer>
             <AttireContainer>
               <AttireTitle>Attire</AttireTitle>
               <AttireText>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-                quis volutpat mauris. Cras volutpat finibus dui, at congue sem.
+                Indian traditional/ chaniya choli/ kurtas Bright colours and
+                florals are always a good choice.
               </AttireText>
             </AttireContainer>
           </LastColumn>
