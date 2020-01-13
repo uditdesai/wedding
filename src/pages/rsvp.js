@@ -45,6 +45,10 @@ const BackLink = styled.p`
   @media (max-height: 700px) {
     margin: 50px 0 0 0;
   }
+
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 `
 
 const Hashtag = styled.p`
@@ -71,6 +75,10 @@ const FormContainer = styled.div`
   @media (max-height: 700px) {
     margin: 25px 0 50px 0;
   }
+
+  @media (max-width: 500px) {
+    width: 90%;
+  }
 `
 
 const FormTitle = styled.h1`
@@ -83,6 +91,10 @@ const FormTitle = styled.h1`
 
   &:first-of-type {
     margin: 0 0 30px 0;
+  }
+
+  @media (max-width: 500px) {
+    width: 90%;
   }
 `
 
@@ -175,6 +187,10 @@ const EventRSVPWrapper = styled.div`
   border: 1px dashed #e4e4e4;
   box-sizing: border-box;
   padding: 20px;
+
+  @media (max-width: 500px) {
+    width: 90%;
+  }
 `
 
 const EventQuestionWrapper = styled.div`
@@ -182,6 +198,12 @@ const EventQuestionWrapper = styled.div`
   display: grid;
   grid-template-columns: 50% 50%;
   margin: 10px 0 0 0;
+
+  @media (max-width: 500px) {
+    margin: 20px 0 0 0;
+    grid-template-columns: 100%;
+    grid-gap: 20px 0;
+  }
 `
 
 const EventTitle = styled.h4`
@@ -232,6 +254,10 @@ const FamilyMemberText = styled.p`
   color: black;
   width: 200px;
   margin: 0 20px 0 0;
+
+  @media (max-width: 500px) {
+    width: 60%;
+  }
 `
 
 const FamilyMemberInput = styled.select`
@@ -347,6 +373,8 @@ const RSVPPage = ({ data }) => {
   }
 
   useEffect(() => {
+    console.log(guests)
+
     const myCallback = function(error, options, response) {
       if (!error) {
         setGuestData(response.rows.slice(1, response.rows.length))
@@ -369,26 +397,29 @@ const RSVPPage = ({ data }) => {
           guests[sheetIndex].node.name.toLowerCase().trim() ===
           guestData[i].cellsArray[0].toLowerCase().trim()
         ) {
-          setEditScreen(true)
           if (guestData[i].cellsArray[5] !== "n/a") {
+            setEditScreen(true)
             setBridesPithi({
               attending: guestData[i].cellsArray[5],
               numOfFamily: guestData[i].cellsArray[13],
             })
           }
           if (guestData[i].cellsArray[7] !== "n/a") {
+            setEditScreen(true)
             setGroomsPithi({
               attending: guestData[i].cellsArray[7],
               numOfFamily: guestData[i].cellsArray[14],
             })
           }
           if (guestData[i].cellsArray[9] !== "n/a") {
+            setEditScreen(true)
             setWedding({
               attending: guestData[i].cellsArray[9],
               numOfFamily: guestData[i].cellsArray[15],
             })
           }
           if (guestData[i].cellsArray[11] !== "n/a") {
+            setEditScreen(true)
             setReception({
               attending: guestData[i].cellsArray[11],
               numOfFamily: guestData[i].cellsArray[16],
@@ -409,26 +440,29 @@ const RSVPPage = ({ data }) => {
           }
 
           if (matchingMember === true) {
-            setEditScreen(true)
             if (guestData[i].cellsArray[5] !== "n/a") {
+              setEditScreen(true)
               setBridesPithi({
                 attending: guestData[i].cellsArray[5],
                 numOfFamily: guestData[i].cellsArray[13],
               })
             }
             if (guestData[i].cellsArray[7] !== "n/a") {
+              setEditScreen(true)
               setGroomsPithi({
                 attending: guestData[i].cellsArray[7],
                 numOfFamily: guestData[i].cellsArray[14],
               })
             }
             if (guestData[i].cellsArray[9] !== "n/a") {
+              setEditScreen(true)
               setWedding({
                 attending: guestData[i].cellsArray[9],
                 numOfFamily: guestData[i].cellsArray[15],
               })
             }
             if (guestData[i].cellsArray[11] !== "n/a") {
+              setEditScreen(true)
               setReception({
                 attending: guestData[i].cellsArray[11],
                 numOfFamily: guestData[i].cellsArray[16],
@@ -660,10 +694,11 @@ const RSVPPage = ({ data }) => {
                         value={bridesPithi.numOfFamily}
                         onChange={bridesPithiFamilyHandler}
                       >
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                        {[...Array(guests[sheetIndex].node.numberofguests)].map(
+                          (val, i) => {
+                            return <option value={i}>{i}</option>
+                          }
+                        )}
                       </FamilyMemberInput>
                     </FamilyMembersWrapper>
                   </EventQuestionWrapper>
@@ -672,48 +707,51 @@ const RSVPPage = ({ data }) => {
                 <></>
               )}
               {(tag === "all events" && side === "groom") ||
-                (tag === "pithi" && side === "groom" && (
-                  <EventRSVPWrapper>
-                    <EventTitle>Groom's Grah Shanti</EventTitle>
-                    <EventQuestionWrapper>
-                      <YesNoWrapper>
-                        <YesNoTitle>Can you attend?</YesNoTitle>
-                        <AttendanceWrapper>
-                          <YesNo>Yes</YesNo>
-                          <YesNoInput
-                            checked={groomsPithi.attending === "yes"}
-                            value="yes"
-                            type="radio"
-                            onChange={groomsPithiAttendanceHandler}
-                          />
-                        </AttendanceWrapper>
-                        <AttendanceWrapper>
-                          <YesNo>No</YesNo>
-                          <YesNoInput
-                            checked={groomsPithi.attending === "no"}
-                            value="no"
-                            type="radio"
-                            onChange={groomsPithiAttendanceHandler}
-                          />
-                        </AttendanceWrapper>
-                      </YesNoWrapper>
-                      <FamilyMembersWrapper>
-                        <FamilyMemberText>
-                          Number of family members who can attend?
-                        </FamilyMemberText>
-                        <FamilyMemberInput
-                          value={groomsPithi.numOfFamily}
-                          onChange={groomsPithiFamilyHandler}
-                        >
-                          <option value="0">0</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                        </FamilyMemberInput>
-                      </FamilyMembersWrapper>
-                    </EventQuestionWrapper>
-                  </EventRSVPWrapper>
-                ))}
+              (tag === "pithi" && side === "groom") ? (
+                <EventRSVPWrapper>
+                  <EventTitle>Groom's Grah Shanti</EventTitle>
+                  <EventQuestionWrapper>
+                    <YesNoWrapper>
+                      <YesNoTitle>Can you attend?</YesNoTitle>
+                      <AttendanceWrapper>
+                        <YesNo>Yes</YesNo>
+                        <YesNoInput
+                          checked={groomsPithi.attending === "yes"}
+                          value="yes"
+                          type="radio"
+                          onChange={groomsPithiAttendanceHandler}
+                        />
+                      </AttendanceWrapper>
+                      <AttendanceWrapper>
+                        <YesNo>No</YesNo>
+                        <YesNoInput
+                          checked={groomsPithi.attending === "no"}
+                          value="no"
+                          type="radio"
+                          onChange={groomsPithiAttendanceHandler}
+                        />
+                      </AttendanceWrapper>
+                    </YesNoWrapper>
+                    <FamilyMembersWrapper>
+                      <FamilyMemberText>
+                        Number of family members who can attend?
+                      </FamilyMemberText>
+                      <FamilyMemberInput
+                        value={groomsPithi.numOfFamily}
+                        onChange={groomsPithiFamilyHandler}
+                      >
+                        {[...Array(guests[sheetIndex].node.numberofguests)].map(
+                          (val, i) => {
+                            return <option value={i}>{i}</option>
+                          }
+                        )}
+                      </FamilyMemberInput>
+                    </FamilyMembersWrapper>
+                  </EventQuestionWrapper>
+                </EventRSVPWrapper>
+              ) : (
+                <></>
+              )}
               {(tag === "all events" ||
                 tag === "wedding" ||
                 tag === "wedding and reception") && (
@@ -749,10 +787,11 @@ const RSVPPage = ({ data }) => {
                         value={wedding.numOfFamily}
                         onChange={weddingFamilyHandler}
                       >
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                        {[...Array(guests[sheetIndex].node.numberofguests)].map(
+                          (val, i) => {
+                            return <option value={i}>{i}</option>
+                          }
+                        )}
                       </FamilyMemberInput>
                     </FamilyMembersWrapper>
                   </EventQuestionWrapper>
@@ -793,10 +832,11 @@ const RSVPPage = ({ data }) => {
                         value={reception.numOfFamily}
                         onChange={receptionFamilyHandler}
                       >
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                        {[...Array(guests[sheetIndex].node.numberofguests)].map(
+                          (val, i) => {
+                            return <option value={i}>{i}</option>
+                          }
+                        )}
                       </FamilyMemberInput>
                     </FamilyMembersWrapper>
                   </EventQuestionWrapper>

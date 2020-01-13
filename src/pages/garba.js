@@ -36,7 +36,7 @@ const StartContainer = styled.div`
   align-items: flex-start;
   margin: 0px 0 20px 0;
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1300px) {
     width: 90%;
   }
 `
@@ -76,6 +76,10 @@ const LinkButton = styled.div`
   &:hover {
     box-shadow: 1px 3px 11px rgba(33, 33, 33, 0.3);
   }
+
+  @media (max-width: 800px) {
+    width: 120px;
+  }
 `
 
 const BackLink = styled.p`
@@ -91,6 +95,10 @@ const EventTitle = styled.h1`
   font-size: 60px;
   color: black;
   margin: 20px 0 0 0;
+
+  @media (max-width: 500px) {
+    font-size: 48px;
+  }
 `
 
 const ContentContainer = styled.div`
@@ -101,6 +109,10 @@ const ContentContainer = styled.div`
 
   @media (max-height: 675px) {
     margin: 0 0 50px 0;
+  }
+
+  @media (max-width: 1300px) {
+    width: 90%;
   }
 
   @media (max-width: 1100px) {
@@ -129,6 +141,7 @@ const DateContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 1px 3px 11px rgba(33, 33, 33, 0.3);
 
   @media (max-width: 1100px) {
     margin: 0 0 20px 0;
@@ -178,13 +191,13 @@ const DateSmallText = styled.p`
 
 const DateMediumText = styled.p`
   font-family: "Judson-Bold";
-  font-size: 13px;
-  width: 110px;
+  font-size: 14px;
+  width: 115px;
   color: white;
   margin: 0 0 -10px 0;
 
   @media (max-width: 1100px) {
-    font-size: 12px;
+    font-size: 11px;
     width: 80px;
   }
 `
@@ -197,6 +210,9 @@ const BannerImage = styled.img`
   box-shadow: 1px 3px 11px rgba(33, 33, 33, 0.3);
 
   @media (max-width: 1100px) {
+    height: 700px;
+  }
+  @media (max-width: 800px) {
     height: 400px;
   }
 `
@@ -273,13 +289,14 @@ const ScheduleTime = styled.p`
   font-family: "Judson-Regular";
   font-size: 18px;
   color: black;
+  margin: 12px 0 12px 0;
 
   @media (max-width: 1200px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   @media (max-width: 1100px) {
-    font-size: 14px;
+    font-size: 16px;
     margin: 10px 0 10px 0;
   }
 `
@@ -290,14 +307,15 @@ const ScheduleDesc = styled.p`
   color: black;
   width: 180px;
   text-align: left;
+  margin: 12px 0 12px 0;
 
   @media (max-width: 1200px) {
-    font-size: 14px;
+    font-size: 16px;
     width: 150px;
   }
 
   @media (max-width: 1100px) {
-    font-size: 14px;
+    font-size: 16px;
     margin: 10px 0 10px 0;
   }
 `
@@ -347,48 +365,48 @@ const LocationTitle = styled.h1`
 
 const LocationTextBold = styled.p`
   font-family: "Judson-Bold";
-  font-size: 16px;
+  font-size: 18px;
   color: black;
   margin: 10px 0 10px 0;
 
   @media (max-width: 1200px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   @media (max-width: 1100px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 `
 
 const LocationText = styled.p`
   font-family: "Judson-Regular";
-  font-size: 16px;
+  font-size: 18px;
   color: black;
   margin: 0 0 10px 0;
 
   @media (max-width: 1200px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   @media (max-width: 1100px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 `
 
 const LocationLink = styled.a`
   text-decoration: none;
   font-family: "Judson-Regular";
-  font-size: 16px;
+  font-size: 18px;
   color: black;
   margin: 0 0 0 0;
   text-decoration: underline;
 
   @media (max-width: 1200px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   @media (max-width: 1100px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 `
 
@@ -425,16 +443,16 @@ const AttireTitle = styled.h1`
 
 const AttireText = styled.p`
   font-family: "Judson-Regular";
-  font-size: 16px;
+  font-size: 18px;
   color: black;
   margin: 10px 0 10px 0;
 
   @media (max-width: 1200px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   @media (max-width: 1100px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 `
 
@@ -510,9 +528,9 @@ const GarbaPage = () => {
             </LocationContainer>
             <AttireContainer>
               <AttireTitle>Attire</AttireTitle>
+              <AttireText>Indian traditional/ chaniya choli/ kurtas</AttireText>
               <AttireText>
-                Indian traditional/ chaniya choli/ kurtas Bright colours and
-                florals are always a good choice.
+                Bright colours and florals are always a good choice.
               </AttireText>
             </AttireContainer>
           </LastColumn>

@@ -978,17 +978,17 @@ const IndexPage = () => {
           ></StoryImg2Right>
           <StoryImg3Left top={500} right={50} src={KathanKid}></StoryImg3Left>
           <StoryImg4Right top={800} right={50} src={RichaKid}></StoryImg4Right>
-          <StoryImg2Left top={1050} right={50} src={KathanGrad}></StoryImg2Left>
+          <StoryImg2Left
+            top={1050}
+            right={50}
+            src={KathanRichaHalloween}
+          ></StoryImg2Left>
           <StoryImg1Right
             top={1250}
             right={50}
-            src={RichaGrad}
+            src={KathanGrad}
           ></StoryImg1Right>
-          <StoryImg4Left
-            top={1500}
-            right={50}
-            src={KathanRichaHalloween}
-          ></StoryImg4Left>
+          <StoryImg4Left top={1500} right={50} src={RichaGrad}></StoryImg4Left>
           <StoryImg3Right
             top={1750}
             right={50}

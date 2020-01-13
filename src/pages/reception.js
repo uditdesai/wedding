@@ -36,7 +36,7 @@ const StartContainer = styled.div`
   align-items: flex-start;
   margin: 0px 0 20px 0;
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1300px) {
     width: 90%;
   }
 `
@@ -46,6 +46,13 @@ const LinkContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   display: flex;
+  @media (max-width: 1100px) {
+    margin: 50px 0 0 0;
+  }
+
+  @media (max-height: 675px) {
+    margin: 50px 0 0 0;
+  }
 `
 
 const LinkButton = styled.div`
@@ -68,6 +75,10 @@ const LinkButton = styled.div`
   &:hover {
     box-shadow: 1px 3px 11px rgba(33, 33, 33, 0.3);
   }
+
+  @media (max-width: 800px) {
+    width: 120px;
+  }
 `
 
 const BackLink = styled.p`
@@ -76,14 +87,6 @@ const BackLink = styled.p`
   color: black;
   text-decoration: underline;
   margin: 0;
-
-  @media (max-width: 1100px) {
-    margin: 50px 0 0 0;
-  }
-
-  @media (max-height: 675px) {
-    margin: 50px 0 0 0;
-  }
 `
 
 const EventTitle = styled.h1`
@@ -91,6 +94,10 @@ const EventTitle = styled.h1`
   font-size: 64px;
   color: black;
   margin: 20px 0 0 0;
+
+  @media (max-width: 800px) {
+    font-size: 48px;
+  }
 `
 
 const ContentContainer = styled.div`
@@ -101,6 +108,10 @@ const ContentContainer = styled.div`
 
   @media (max-height: 675px) {
     margin: 0 0 50px 0;
+  }
+
+  @media (max-width: 1300px) {
+    width: 90%;
   }
 
   @media (max-width: 1100px) {
@@ -180,12 +191,12 @@ const DateSmallText = styled.p`
 const DateMediumText = styled.p`
   font-family: "Judson-Bold";
   font-size: 14px;
-  width: 90px;
+  width: 115px;
   color: white;
   margin: 0 0 -10px 0;
 
   @media (max-width: 1100px) {
-    font-size: 12px;
+    font-size: 11px;
     width: 80px;
   }
 `
@@ -198,7 +209,10 @@ const BannerImage = styled.img`
   box-shadow: 1px 3px 11px rgba(33, 33, 33, 0.3);
 
   @media (max-width: 1100px) {
-    height: 250px;
+    height: 700px;
+  }
+  @media (max-width: 800px) {
+    height: 400px;
   }
 `
 
@@ -221,6 +235,20 @@ const ScheduleContainer = styled.div`
     width: 100%;
     margin: 20px 0 0 0;
   }
+`
+
+const ScheduleDescription = styled.p`
+  font-family: "Judson-Italic";
+  font-size: 22px;
+  color: black;
+  margin: 0 0 30px 0;
+`
+
+const Divider = styled.div`
+  height: 2px;
+  width: 100%;
+  background: black;
+  margin: 0 0 30px 0;
 `
 
 const ScheduleTitle = styled.h1`
@@ -249,7 +277,7 @@ const TimeWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin: 0 0 10px 0;
+  margin: 0 0 0 0;
 
   @media (max-width: 1100px) {
     margin: 0;
@@ -260,13 +288,14 @@ const ScheduleTime = styled.p`
   font-family: "Judson-Regular";
   font-size: 16px;
   color: black;
+  margin: 12px 0 12px 0;
 
   @media (max-width: 1200px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   @media (max-width: 1100px) {
-    font-size: 14px;
+    font-size: 16px;
     margin: 10px 0 10px 0;
   }
 `
@@ -277,14 +306,15 @@ const ScheduleDesc = styled.p`
   color: black;
   width: 180px;
   text-align: left;
+  margin: 12px 0 12px 0;
 
   @media (max-width: 1200px) {
-    font-size: 14px;
+    font-size: 16px;
     width: 150px;
   }
 
   @media (max-width: 1100px) {
-    font-size: 14px;
+    font-size: 16px;
     margin: 10px 0 10px 0;
   }
 `
@@ -334,48 +364,48 @@ const LocationTitle = styled.h1`
 
 const LocationTextBold = styled.p`
   font-family: "Judson-Bold";
-  font-size: 16px;
+  font-size: 18px;
   color: black;
   margin: 10px 0 10px 0;
 
   @media (max-width: 1200px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   @media (max-width: 1100px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 `
 
 const LocationText = styled.p`
   font-family: "Judson-Regular";
-  font-size: 16px;
+  font-size: 18px;
   color: black;
   margin: 0 0 10px 0;
 
   @media (max-width: 1200px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   @media (max-width: 1100px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 `
 
 const LocationLink = styled.a`
   text-decoration: none;
   font-family: "Judson-Regular";
-  font-size: 16px;
+  font-size: 18px;
   color: black;
   margin: 0 0 0 0;
   text-decoration: underline;
 
   @media (max-width: 1200px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   @media (max-width: 1100px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 `
 
@@ -412,16 +442,16 @@ const AttireTitle = styled.h1`
 
 const AttireText = styled.p`
   font-family: "Judson-Regular";
-  font-size: 16px;
+  font-size: 18px;
   color: black;
   margin: 10px 0 10px 0;
 
   @media (max-width: 1200px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   @media (max-width: 1100px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 `
 
@@ -448,39 +478,37 @@ const ReceptionPage = () => {
                 <DateSmallText>June 2020</DateSmallText>
               </DateWrapper>
               <MidDateWrapper>
-                <DateBigText>7:00</DateBigText>
+                <DateBigText>6:00</DateBigText>
                 <DateSmallText>PM</DateSmallText>
               </MidDateWrapper>
               <DateWrapper>
-                <DateMediumText>Grand Galaxy Banquet Hall</DateMediumText>
+                <DateMediumText>Embassy Grand Convention Centre</DateMediumText>
               </DateWrapper>
             </DateContainer>
             <BannerImage src={Reception} />
           </BannerContainer>
           <ScheduleContainer>
+            <ScheduleDescription>
+              Let’s nacho! Abhi toh party shuru hui haii! Auntyji auntyji, get
+              up and dance! Say Shava Shava! It's the time to disco!
+            </ScheduleDescription>
+            <Divider></Divider>
             <ScheduleTitle>Schedule</ScheduleTitle>
             <ScheduleWrapper>
               <TimeWrapper>
-                <ScheduleTime>6:30pm</ScheduleTime>
-                <ScheduleDesc>Guests start arriving</ScheduleDesc>
-              </TimeWrapper>
-              <TimeWrapper>
-                <ScheduleTime>7:00pm</ScheduleTime>
-                <ScheduleDesc>Food is ready to be taken</ScheduleDesc>
+                <ScheduleTime>6:00pm</ScheduleTime>
+                <ScheduleDesc>Cocktail Hour/Open Bar</ScheduleDesc>
               </TimeWrapper>
               <TimeWrapper>
                 <ScheduleTime>7:30pm</ScheduleTime>
-                <ScheduleDesc>Program begins with performances</ScheduleDesc>
+                <ScheduleDesc>Bride and Groom Entrances</ScheduleDesc>
               </TimeWrapper>
               <TimeWrapper>
-                <ScheduleTime>8:30pm</ScheduleTime>
-                <ScheduleDesc>Garba starts now</ScheduleDesc>
+                <ScheduleTime>7:45pm</ScheduleTime>
+                <ScheduleDesc>Performances and Speeches</ScheduleDesc>
               </TimeWrapper>
               <TimeWrapper>
-                <ScheduleTime>9:30pm</ScheduleTime>
-                <ScheduleDesc>
-                  Open dance floor begins. Be ready to party!
-                </ScheduleDesc>
+                <ScheduleTime>Dinner and Dance to follow</ScheduleTime>
               </TimeWrapper>
             </ScheduleWrapper>
           </ScheduleContainer>
@@ -488,21 +516,22 @@ const ReceptionPage = () => {
             <LocationContainer>
               <LocationTitle>Location</LocationTitle>
               <LocationTextBold>
-                Galaxy Grand Convention Centre
+                Embassy Grand Convention Centre
               </LocationTextBold>
               <LocationText>
-                200 Advance Blvd, Brampton, ON L6T 4V5
+                8800 The Gore Rd, Brampton, ON L6P 0B1
               </LocationText>
-              <LocationLink href="https://www.google.ca/maps" target="_blank">
+              <LocationLink
+                href="https://goo.gl/maps/Z7KStVmwaei4iES1A"
+                target="_blank"
+              >
                 See on Google Maps
               </LocationLink>
             </LocationContainer>
             <AttireContainer>
               <AttireTitle>Attire</AttireTitle>
-              <AttireText>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-                quis volutpat mauris. Cras volutpat finibus dui, at congue sem.
-              </AttireText>
+              <AttireText>Indian/Indo-western</AttireText>
+              <AttireText>Dancing shoes are a must!</AttireText>
             </AttireContainer>
           </LastColumn>
         </ContentContainer>
