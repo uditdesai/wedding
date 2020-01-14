@@ -1061,7 +1061,7 @@ const IndexPage = () => {
       <Footer>
         <FooterWrapper>
           <FooterTitle>
-            Use #KathanGetsRich and tag us @richagram and @hashtagkathan when
+            Use #KathanGetsRich and tag us @richaagram and @hashtagkathan when
             sharing your memories!
           </FooterTitle>
           <StyledLink to="/rsvp">
