@@ -259,10 +259,14 @@ const RSVPDateSubText = styled.p`
 const RSVPInvitationText = styled.p`
   font-family: "Judson-Regular";
   color: black;
-  font-size: 18px;
+  font-size: 20px;
   margin: 0;
   width: 250px;
   text-align: center;
+
+  @media (max-width: 800px) {
+    font-size: 18px;
+  }
 `
 
 const RSVPSectionButton = styled.button`
@@ -785,8 +789,8 @@ const IndexPage = () => {
           <RSVPInnerSectionTwo>
             <RSVPTitle>Shaadi Mein Zaroor Aana!</RSVPTitle>
             <RSVPInvitationText>
-              Celebrate with Richa and Kathan as they take on a new chapter of
-              their lives!
+              Richa weds Kathan! Celebrate with them as they take on a new
+              chapter of their lives!
             </RSVPInvitationText>
             <StyledLink to="/rsvp">
               <RSVPSectionButton>RSVP</RSVPSectionButton>
@@ -1042,18 +1046,18 @@ const IndexPage = () => {
           <StoryImg1Right
             top={1250}
             right={50}
-            src={KathanGrad}
+            src={RichaKathanToronto}
           ></StoryImg1Right>
-          <StoryImg4Left top={1500} right={50} src={RichaGrad}></StoryImg4Left>
+          <StoryImg4Left top={1500} right={50} src={KathanGrad}></StoryImg4Left>
           <StoryImg3Right
             top={1750}
             right={50}
-            src={KathanRichaChandla}
+            src={RichaGrad}
           ></StoryImg3Right>
           <StoryImg1Left
             top={2000}
             right={50}
-            src={RichaKathanToronto}
+            src={KathanRichaChandla}
           ></StoryImg1Left>
         </StorySection>
         <LastStoryImg></LastStoryImg>

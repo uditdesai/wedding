@@ -530,7 +530,12 @@ const ReceptionPage = () => {
             </LocationContainer>
             <AttireContainer>
               <AttireTitle>Attire</AttireTitle>
-              <AttireText>Indian/Indo-western</AttireText>
+              <AttireText>
+                <strong>Men</strong>: Suit up!
+              </AttireText>
+              <AttireText>
+                <strong>Ladies</strong>: Dress to impress!
+              </AttireText>
               <AttireText>Dancing shoes are a must!</AttireText>
             </AttireContainer>
           </LastColumn>

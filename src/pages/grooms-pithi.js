@@ -508,7 +508,6 @@ const GroomsPithiPage = () => {
             <AttireContainer>
               <AttireTitle>Attire</AttireTitle>
               <AttireText>Indian traditional</AttireText>
-              <AttireText>Wear yellow/orange to match the haldi!</AttireText>
             </AttireContainer>
           </LastColumn>
         </ContentContainer>

@@ -505,7 +505,7 @@ const WeddingPage = () => {
               </TimeWrapper>
               <TimeWrapper>
                 <ScheduleTime>9:45am</ScheduleTime>
-                <ScheduleDesc>Hast Melap</ScheduleDesc>
+                <ScheduleDesc>Hasta Melap</ScheduleDesc>
               </TimeWrapper>
               <TimeWrapper>
                 <ScheduleTime>Lunch</ScheduleTime>
@@ -535,6 +535,7 @@ const WeddingPage = () => {
             <AttireContainer>
               <AttireTitle>Attire</AttireTitle>
               <AttireText>Indian Traditional</AttireText>
+              <AttireText>Pastels or light colors!</AttireText>
             </AttireContainer>
           </LastColumn>
         </ContentContainer>

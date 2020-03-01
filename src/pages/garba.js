@@ -528,10 +528,8 @@ const GarbaPage = () => {
             </LocationContainer>
             <AttireContainer>
               <AttireTitle>Attire</AttireTitle>
-              <AttireText>Indian traditional/ chaniya choli/ kurtas</AttireText>
-              <AttireText>
-                Bright colours and florals are always a good choice.
-              </AttireText>
+              <AttireText>Desi attire</AttireText>
+              <AttireText>Bright colours and florals. Be funky!</AttireText>
             </AttireContainer>
           </LastColumn>
         </ContentContainer>
