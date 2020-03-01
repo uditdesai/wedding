@@ -154,7 +154,7 @@ const EmailTitle = styled.label`
   color: black;
   width: 300px;
   text-align: left;
-  margin: 30px 0 5px 0;
+  margin: 30px 0 15px 0;
 `
 
 const InputForm = styled.input`
@@ -1069,7 +1069,8 @@ const RSVPPage = ({ data }) => {
                     </EventRSVPWrapper>
                   )}
                   <EmailTitle htmlFor="email">
-                    Please enter your email to RSVP!
+                    Please provide your email so we are able to send you details
+                    and updates regarding the wedding!
                   </EmailTitle>
                   <InputForm
                     type="text"
