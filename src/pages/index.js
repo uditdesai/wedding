@@ -4,6 +4,11 @@ import styled from "styled-components"
 import { TweenMax } from "gsap"
 import CSSPlugin from "gsap/CSSPlugin"
 import useWindowSize from "../hooks/useWindowSize"
+import { Helmet } from "react-helmet"
+
+import favicon16 from "../images/fav16.png"
+import favicon32 from "../images/fav32.png"
+import favicon64 from "../images/fav64.png"
 
 import Landing from "../images/landing.png"
 import LandingMobile from "../images/landingMobile.png"
@@ -762,6 +767,34 @@ const IndexPage = () => {
 
   return (
     <>
+      <Helmet
+        link={[
+          {
+            rel: "icon",
+            type: "image/png",
+            sizes: "16x16",
+            href: `${favicon16}`,
+          },
+          {
+            rel: "icon",
+            type: "image/png",
+            sizes: "32x32",
+            href: `${favicon32}`,
+          },
+          {
+            rel: "icon",
+            type: "image/png",
+            sizes: "64x64",
+            href: `${favicon64}`,
+          },
+          {
+            rel: "stylesheet",
+            href: "https://use.typekit.net/ggs2buq.css",
+          },
+        ]}
+      >
+        <title>Richa Weds Kathan</title>
+      </Helmet>
       <LandingContainer>
         <LandingGradientOverlay>
           <LandingTitle>#KathanGetsRich</LandingTitle>

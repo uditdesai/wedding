@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
+import { Helmet } from "react-helmet"
+
+import favicon16 from "../images/fav16.png"
+import favicon32 from "../images/fav32.png"
+import favicon64 from "../images/fav64.png"
 
 import GroomsPithi from "../images/grooms-pithi.jpg"
 
@@ -456,6 +461,34 @@ const AttireText = styled.p`
 const GroomsPithiPage = () => {
   return (
     <>
+      <Helmet
+        link={[
+          {
+            rel: "icon",
+            type: "image/png",
+            sizes: "16x16",
+            href: `${favicon16}`,
+          },
+          {
+            rel: "icon",
+            type: "image/png",
+            sizes: "32x32",
+            href: `${favicon32}`,
+          },
+          {
+            rel: "icon",
+            type: "image/png",
+            sizes: "64x64",
+            href: `${favicon64}`,
+          },
+          {
+            rel: "stylesheet",
+            href: "https://use.typekit.net/ggs2buq.css",
+          },
+        ]}
+      >
+        <title>Richa Weds Kathan</title>
+      </Helmet>
       <EventsContainer>
         <StartContainer>
           <LinkContainer>
