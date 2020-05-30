@@ -35,6 +35,23 @@ import GroomsPithi from "../images/grooms-pithi.jpg"
 
 const C = CSSPlugin
 
+const ComingSoonContainer = styled.div`
+  width: 100%;
+  min-height: 100vh;
+  background: #fddab2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const ComingSoonText = styled.h1`
+  font-family: "KaushanScript-Regular";
+  font-size: 64px;
+  color: black;
+  text-align: center;
+  margin: 0;
+`
+
 const StyledLink = styled(Link)`
   text-decoration: none;
   outline: none;
@@ -795,7 +812,12 @@ const IndexPage = () => {
       >
         <title>Richa Weds Kathan</title>
       </Helmet>
-      <LandingContainer>
+      <ComingSoonContainer>
+        <ComingSoonText>
+          Coming soon!
+        </ComingSoonText>
+      </ComingSoonContainer>
+      {/* <LandingContainer>
         <LandingGradientOverlay>
           <LandingTitle>#KathanGetsRich</LandingTitle>
           <LandingDate>June 25 - June 28, 2020</LandingDate>
@@ -1105,7 +1127,7 @@ const IndexPage = () => {
             <FooterButton>RSVP</FooterButton>
           </StyledLink>
         </FooterWrapper>
-      </Footer>
+      </Footer> */}
     </>
   )
 }
